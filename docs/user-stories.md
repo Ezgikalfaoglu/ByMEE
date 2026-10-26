@@ -19,12 +19,12 @@ Use the story ID in every pull request title, for example `feat(BM-006): profile
 | BM-002 | Navigation shell with five tabs | Eda |
 | BM-003 | Shared data contracts and mock services | Berfin |
 | BM-004 | App state, storage and module events | Eda |
+| BM-005 | Welcome and onboarding | Melike |
 
 ## Sprint 2 (9 Nov to 20 Nov 2026): First screens and the Thread
 
 | ID | Story | Owner |
 |---|---|---|
-| BM-005 | Welcome and onboarding | Melike |
 | BM-006 | Profile setup | Melike |
 | BM-007 | Home: today's Thread | Eda |
 | BM-008 | Research request | Eda |
