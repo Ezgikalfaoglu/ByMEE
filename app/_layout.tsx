@@ -15,8 +15,10 @@ import { colors } from '@/theme';
 SplashScreen.preventAutoHideAsync();
 
 /**
- * Root layout (project setup by Ezgi).
- * BM-002 (Eda) adds the first-start check, the five tabs and the gate flow here.
+ * Root layout (project setup by Ezgi, navigation by Eda in BM-002).
+ * - onboarding: 01 and 02, no tab bar
+ * - (tabs): the five tabs
+ * - gate: 19 to 24, full screen, no tab bar, ✕ to leave
  * BM-004 (Eda) wraps the app with AppStateProvider here.
  */
 export default function RootLayout() {
@@ -37,7 +39,15 @@ export default function RootLayout() {
             headerShown: false,
             contentStyle: { backgroundColor: colors.ivory },
           }}
-        />
+        >
+          <Stack.Screen name="index" />
+          <Stack.Screen name="onboarding" />
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen
+            name="gate"
+            options={{ presentation: 'fullScreenModal', gestureEnabled: false }}
+          />
+        </Stack>
       </ToastProvider>
     </SafeAreaProvider>
   );
