@@ -8,7 +8,7 @@ export type AppTextProps = TextProps & {
   center?: boolean;
 };
 
-/** Use this instead of <Text> so every screen uses DM Sans and the same sizes. */
+/** Use this instead of <Text> so every screen uses Plus Jakarta Sans and the same sizes. */
 export function AppText({
   variant = 'body',
   color,
