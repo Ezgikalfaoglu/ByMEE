@@ -11,7 +11,7 @@ export type ScreenHeaderProps = {
   /** Sub screens show a back arrow. Default: go back in the stack. */
   showBack?: boolean;
   onBack?: () => void;
-  /** Gate flow (19 to 24) shows ✕ instead of a back arrow. */
+  /** Approval (22), Targeted question (23) and New limit (25) show ✕ instead of a back arrow. */
   onClose?: () => void;
   right?: ReactNode;
 };

@@ -15,7 +15,7 @@ export type ScreenProps = {
   contentStyle?: StyleProp<ViewStyle>;
 };
 
-/** Page wrapper: ivory background, safe area and 20 px side padding. */
+/** Page wrapper: bg background, safe area and screen side padding. */
 export function Screen({
   children,
   scroll = true,
