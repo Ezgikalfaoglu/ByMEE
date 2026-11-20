@@ -15,7 +15,7 @@ export type ScreenProps = {
   contentStyle?: StyleProp<ViewStyle>;
 };
 
-/** Page wrapper: ivory background, safe area and 20 px side padding. */
+/** Page wrapper: bg background, safe area and screen side padding. */
 export function Screen({
   children,
   scroll = true,
@@ -43,7 +43,7 @@ export function Screen({
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.ivory },
+  safe: { flex: 1, backgroundColor: colors.bg },
   content: { paddingHorizontal: spacing.screen, paddingVertical: spacing.md, gap: spacing.md },
   fill: { flex: 1 },
   footer: {

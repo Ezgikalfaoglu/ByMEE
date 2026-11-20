@@ -20,7 +20,7 @@ export function Chip({ label, selected = false, onPress, disabled = false }: Chi
       accessibilityState={{ selected, disabled }}
       style={[styles.chip, selected && styles.selected, disabled && styles.disabled]}
     >
-      <AppText variant="bodyStrong" color={selected ? colors.textOnIndigo : colors.indigo}>
+      <AppText variant="bodyStrong" color={selected ? colors.onPrimary : colors.primary}>
         {label}
       </AppText>
     </Pressable>
@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.xs + 2,
     borderRadius: radius.pill,
     borderWidth: 1,
-    borderColor: colors.indigo,
+    borderColor: colors.primary,
     backgroundColor: colors.surface,
     justifyContent: 'center',
   },
-  selected: { backgroundColor: colors.indigo },
+  selected: { backgroundColor: colors.primary },
   disabled: { opacity: 0.5 },
 });

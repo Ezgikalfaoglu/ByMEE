@@ -18,7 +18,7 @@ export function TextField({ label, error, hint, multiline, ...rest }: TextFieldP
         {...rest}
         multiline={multiline}
         accessibilityLabel={label}
-        placeholderTextColor={colors.textMuted}
+        placeholderTextColor={colors.muted}
         style={[styles.input, multiline && styles.multiline, error ? styles.inputError : null]}
       />
       {error ? (
@@ -39,14 +39,14 @@ const styles = StyleSheet.create({
   input: {
     minHeight: touchTarget + 4,
     borderWidth: 1,
-    borderColor: colors.border,
+    borderColor: colors.line,
     borderRadius: radius.md,
     backgroundColor: colors.surface,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
     fontFamily: fonts.regular,
     fontSize: 15,
-    color: colors.text,
+    color: colors.ink,
   },
   multiline: { minHeight: 100, textAlignVertical: 'top' },
   inputError: { borderColor: colors.danger },

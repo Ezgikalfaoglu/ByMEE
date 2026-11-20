@@ -57,13 +57,13 @@ export function Button({
 }
 
 const variants: Record<ButtonVariant, { container: ViewStyle; textColor: string }> = {
-  primary: { container: { backgroundColor: colors.indigo }, textColor: colors.textOnIndigo },
+  primary: { container: { backgroundColor: colors.primary }, textColor: colors.onPrimary },
   secondary: {
-    container: { backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.indigo },
-    textColor: colors.indigo,
+    container: { backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.primary },
+    textColor: colors.primary,
   },
-  text: { container: { backgroundColor: 'transparent' }, textColor: colors.indigo },
-  danger: { container: { backgroundColor: colors.danger }, textColor: colors.white },
+  text: { container: { backgroundColor: 'transparent' }, textColor: colors.primary },
+  danger: { container: { backgroundColor: colors.danger }, textColor: colors.onPrimary },
 };
 
 const styles = StyleSheet.create({

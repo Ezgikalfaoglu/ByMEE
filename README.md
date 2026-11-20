@@ -1,8 +1,8 @@
-# ByMEE: Ekip Kurulum ve Entegrasyon Rehberi
+# Beemy: Ekip Kurulum ve Entegrasyon Rehberi
 
-**Tek repo, tek lockfile, tek tasarım sistemi, 24 mobil ekran.**
+**Tek repo, tek lockfile, tek tasarım sistemi, 30 mobil ekran.** Beemy, TÜBİTAK 2209-A önerisi “Kişisel Yapay Zekâ Asistanlarında Görev Devri ve Yetki Denetimi”nin prototipidir.
 
-User story'ler: [ByMEE User Stories](https://docs.google.com/document/d/1YOpgs57Em4j-3gEsBUu_N7C90nZ8SG8m8ZYjfuopw6g/edit) · İlerleme: [ByMEE Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit) · Özet: [`docs/requirements.md`](docs/requirements.md), [`docs/user-stories.md`](docs/user-stories.md)
+User story'ler: [Beemy User Stories](https://docs.google.com/document/d/1fudNVUfQvUdLdeaM4BntRtCpyhUhFH0DhF2yhvB9TTI/edit) · İlerleme: [Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit) · Ekranlar: [Figma](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2188-2324) · Özet: [`docs/requirements.md`](docs/requirements.md), [`docs/user-stories.md`](docs/user-stories.md), [`docs/screens.md`](docs/screens.md)
 
 ## Ortak teknoloji ve sürüm sözleşmesi (üç kişi için zorunlu)
 
@@ -16,7 +16,7 @@ User story'ler: [ByMEE User Stories](https://docs.google.com/document/d/1YOpgs57
 | Paket yöneticisi | **npm** (yarn/pnpm/bun kullanma) |
 | Expo SDK / React / React Native | **Expo SDK 58**, React 19.3, React Native 0.88. `package-lock.json` ile kilitli |
 | Test | Jest (`jest-expo`) + React Native Testing Library |
-| UI tasarımı | Ortak Figma dosyası, Indigo & Blush tasarım sistemi |
+| UI tasarımı | Figma sayfası “Beemy — Görev Devri ekranları (v3)”, “Beemy renkler” değişkenleri |
 
 **Önemli:** Node ve npm sürümleri sabittir. Expo SDK, React ve React Native sürümlerini PM seçti ve `package-lock.json` ile kilitledi. `npx expo install --check` ile doğrula. Kimse kendi başına `expo@latest`, `react-native@latest`, `npm update`, `npm audit fix --force` veya `npx create-expo-app` çalıştırmamalı. PM'nin onayladığı yükseltme tek PR'da yapılır.
 
@@ -45,7 +45,7 @@ npm -v
 ### GitHub deposunu ilk kez alma
 
 ```bash
-git clone https://github.com/Ezgikalfaoglu/ByMEE.git
+git clone https://github.com/Ezgikalfaoglu/ByMEE.git   # repo adı aynı kaldı
 cd ByMEE
 git checkout <kendi-branch-in>    # Melike-Sahin, Eda-Uluçay veya Berfin-Ozcelik
 node -v
@@ -69,17 +69,16 @@ PR açmadan önce `npm run typecheck` ve `npm test` geçmeli.
 ### Klasör yapısı
 
 ```
-app/                    Expo Router rotaları (BM-002, Eda)
-src/theme/              renkler, font, boşluklar (Ezgi)
+app/                    Expo Router rotaları (BM-006, Eda) · rota listesi: docs/screens.md
+src/theme/              renkler, font, boşluklar (Ezgi, Figma ile aynı)
 src/components/         ortak componentler (Ezgi)
-src/types/              ortak tipler (BM-003, Berfin)
-src/services/           servis arayüzleri ve mock'lar (BM-003, Berfin)
+src/types/              ortak tipler (BM-004 görev tanımı, Eda)
+src/services/           mock temeli (BM-003, Berfin)
 src/utils/              formatMoney() gibi yardımcılar (BM-003, Berfin)
-src/store/              uygulama state'i, kayıt, eventler (BM-004, Eda)
-src/features/personal-intelligence/   Melike, ekran 01-08
-src/features/research-tasks/          Eda, ekran 09-16
-src/features/voice-actions/           Berfin, ekran 17-24
-docs/                   gereksinimler, test planı, raporlar (Ezgi)
+src/features/start-profile/   Melike, ekran 01-10
+src/features/task-tools/      Eda, ekran 11-20
+src/features/authority/       Berfin, ekran 21-30
+docs/                   gereksinimler, user story dizini, ekran listesi (Ezgi)
 ```
 
 Import'larda `@/` kısayolu `src/` klasörünü gösterir: `import { Button } from '@/components';`
@@ -88,36 +87,35 @@ Import'larda `@/` kısayolu `src/` klasörünü gösterir: `import { Button } fr
 
 ### Ortak tasarım sistemi
 
-- Primary Indigo `#2E4A7D`, Blush Pink `#F6CDBD`, Soft Blue `#DCE6F1`, Warm Ivory `#FCF9F6`, Deep Indigo `#1F2E4D`.
-- Her rengin tek anlamı var: Indigo ByMEE ve ana aksiyonlar, **Blush sadece gate'ler** (ByMEE kullanıcıyı bekliyor), Soft Blue bilgi, Ivory arka plan. Hatalar için ayrı kırmızı (`colors.danger`) var. Ayrıntılar dokümandaki Design direction sekmesinde.
-- Font: **DM Sans** (`@expo-google-fonts/dm-sans`, `app/_layout.tsx` içinde yükleniyor).
-- 390 × 844 referans mobil frame, 20 px yatay boşluk, 8 px spacing, 16 px kart radius. Gövde yazısı en az 14 pt, dokunma alanı en az 44 × 44.
-- `src/theme/` ve `src/components/` içindeki ortak parçaları kullan: `Screen`, `ScreenHeader`, `AppText`, `Button`, `Card`, `Chip`, `Tag`, `TextField`, `ListRow`, `StateView`, `useToast`, `confirm`. İkonlar için `@expo/vector-icons` (Ionicons, outline). Ayrı bir UI kütüphanesi veya ikon paketi yükleme.
-- Mesajlar (“Your profile is ready.” gibi) `useToast()` ile, iki butonlu sorular (“Discard your changes?” gibi) `confirm()` ile gösterilir.
-- Robot, parıltı, çiçek, neon AI efekti kullanma; sade outline ikonlar ve ince modern çizgiler kullan.
-
+- Renkler Figma'daki “Beemy renkler” koleksiyonuyla aynı (`src/theme/colors.ts`): `primary #4B3FD6`, `ink #1B1530`, `bg #F6F5FB`, `success #1E9E63`, `warn #E07A12`, `amber #B98204`, `danger #D23C68`, `info #2F7FE0` ve her birinin soft hali.
+- Anlamları: primary Beemy ve ana aksiyonlar, **warn ve amber kullanıcıyı bekleyen işler** (onay, soru), success tamamlandı, danger engellendi veya hata, info bilgi.
+- Font: **Plus Jakarta Sans** (`@expo-google-fonts/plus-jakarta-sans`, `app/_layout.tsx` içinde yükleniyor).
+- 390 × 844 referans mobil frame, 24 px yatay boşluk, 8 px spacing, 18 px kart radius. Gövde yazısı en az 14 pt, dokunma alanı en az 44 × 44.
+- `src/components/` içindeki ortak parçaları kullan: `Screen`, `ScreenHeader`, `AppText`, `Button`, `Card`, `Chip`, `Tag`, `TextField`, `ListRow`, `StateView`, `useToast`, `confirm`. İkonlar için `@expo/vector-icons` (outline).
+- Simüle edilen her işlemde “Simülasyon · sentetik veri” rozeti görünür.
+- Her ekran Figma'daki aynı numaralı frame ile eşleşir: `NN · BM-xxx · Ekran adı · Sahibi`.
 
 ## Ekip
 
-| Geliştirici | Sistem | Branch | Ekranlar |
+| Kişi | Sistem | Branch | Ekranlar |
 |---|---|---|---|
-| Melike Şahin | macOS | `Melike-Sahin` | 01–08 |
-| Eda Uluçay | Windows | `Eda-Uluçay` | 09–16 |
-| Berfin Özçelik | macOS | `Berfin-Ozcelik` | 17–24 |
-| Ezgi (PM / BA / QA) | Kendi sistemi | `main` | Proje kurulumu, tema, ortak componentler, dokümanlar, PR inceleme, test |
+| Melike Şahin | macOS | `Melike-Sahin` | 01–10 |
+| Türkan Eda Uluçay | Windows | `Eda-Uluçay` | 11–20 |
+| Ayşe Berfin Özçelik | macOS | `Berfin-Ozcelik` | 21–30 |
+| Ezginur Kalfaoğlu (Proje yöneticisi) | Kendi sistemi | `main` | Ekran yok: repolar, main, dokümanlar, PR inceleme, final rapor |
 
 ## Proje kurulumu (PM)
 
 - [x] Node `22.14.0` ve npm `10.9.2` ile tek Expo + TypeScript + Expo Router projesi (SDK 58)
 - [x] `package.json`, `package-lock.json` ve `.nvmrc` (`22.14.0`) commit edildi
-- [x] `src/theme/` (Figma renkleri, DM Sans, boşluklar) ve `src/components/` (ortak parçalar)
+- [x] `src/theme/` (Figma renkleri, Plus Jakarta Sans, boşluklar) ve `src/components/` (ortak parçalar)
 - [x] Her geliştiriciye kendi branch'inde ayrı klasör (`src/features/...`) ve içinde `README.md`
-- [x] `docs/requirements.md`, `docs/user-stories.md`, PR ve bug şablonları
+- [x] `docs/requirements.md`, `docs/user-stories.md`, `docs/screens.md`, PR ve bug şablonları
 - [x] Temiz klonda `npm ci`, `npm run typecheck`, `npm test` ve Android bundle denendi
 - [ ] GitHub'da `main` için branch protection ve zorunlu PR incelemesi
 - [ ] Expo Go'yu ekip telefonlarında dene (SDK 58)
 
-Navigasyon (sekmeler, ilk açılış kontrolü, gate akışı) BM-002 ile Eda'da. `app/_layout.tsx` ve `app/index.tsx` şu an sadece projenin çalışması için geçici halde.
+Navigasyon (dört sekme, ilk açılış kontrolü, 30 rota) BM-006 ile Eda'da. `app/_layout.tsx` ve `app/index.tsx` şu an sadece projenin çalışması için geçici halde.
 
 ## Herkesin izleyeceği kurallar
 
@@ -125,16 +123,16 @@ Navigasyon (sekmeler, ilk açılış kontrolü, gate akışı) BM-002 ile Eda'da
 - Herkes VS Code, npm, Git/GitHub ve aynı Expo projesini kullanır.
 - Yeni paket gerekirse PM'ye Issue aç; onay olmadan `npm install <paket>` yapma.
 - Mac'te iOS Simulator isteğe bağlı; Windows'ta Android emulator veya fiziksel telefon kullan.
-- Geliştiriciler kendi branch'lerinde ve kendi feature klasörlerinde çalışır. Ortak dosyalar (`app/`, `src/theme/`, `src/components/`, `src/types/`, `src/services/`, `src/utils/`, `src/store/`) yalnızca Ezgi'nin onayladığı PR ile değişir. Hangi ortak dosyayı kimin yazdığı yukarıdaki klasör yapısında.
+- Geliştiriciler kendi branch'lerinde ve kendi feature klasörlerinde çalışır. Ortak dosyalar (`app/_layout.tsx`, `src/theme/`, `src/components/`, `src/types/`, `src/services/`, `src/utils/`) yalnızca Ezgi'nin onayladığı PR ile değişir. Hangi ortak dosyayı kimin yazdığı yukarıdaki klasör yapısında.
 - `main`'e doğrudan push yok. Her iş PR ile gelir, Ezgi inceler ve birleştirir.
-- PR başlığında story ID olsun: `feat(BM-006): profile setup form`. PR şablonundaki listeyi doldur.
+- PR başlığında story ID ve hikâye adı olsun: `feat(BM-012): New task`. PR şablonundaki listeyi doldur.
 - Her PR için ekran görüntüsü, çalıştırma adımları ve QA kanıtı ekle.
 - `main` güncellenince kendi branch'ine al: `git pull origin main`.
 
 ## Kişisel README dosyaları
 
-Her geliştiricinin branch'inde kendi klasörünün `README.md` dosyası var. İçinde oluşturacağı dosyalar ve story ID'leri yazıyor:
+Her geliştiricinin branch'inde kendi klasörünün `README.md` dosyası var. İçinde ekranları, story ID'leri ve oluşturacağı dosyalar yazıyor:
 
-- Melike: `src/features/personal-intelligence/README.md`
-- Eda: `src/features/research-tasks/README.md`
-- Berfin: `src/features/voice-actions/README.md`
+- Melike: `src/features/start-profile/README.md`
+- Eda: `src/features/task-tools/README.md`
+- Berfin: `src/features/authority/README.md`

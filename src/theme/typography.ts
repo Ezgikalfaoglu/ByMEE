@@ -1,10 +1,11 @@
 import type { TextStyle } from 'react-native';
 
-/** Font names loaded in app/_layout.tsx with @expo-google-fonts/dm-sans. */
+/** Font names loaded in app/_layout.tsx with @expo-google-fonts/plus-jakarta-sans (same as Figma). */
 export const fonts = {
-  regular: 'DMSans_400Regular',
-  medium: 'DMSans_500Medium',
-  bold: 'DMSans_700Bold',
+  regular: 'PlusJakartaSans_400Regular',
+  medium: 'PlusJakartaSans_500Medium',
+  semibold: 'PlusJakartaSans_600SemiBold',
+  bold: 'PlusJakartaSans_700Bold',
 } as const;
 
 /**
