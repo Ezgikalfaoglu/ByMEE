@@ -16,7 +16,7 @@ export function StateView(props: StateViewProps) {
   if (props.state === 'loading') {
     return (
       <View style={styles.wrap} accessibilityRole="progressbar" accessibilityLabel={props.message ?? 'Loading'}>
-        <ActivityIndicator size="large" color={colors.indigo} />
+        <ActivityIndicator size="large" color={colors.primary} />
         {props.message ? (
           <AppText muted center>
             {props.message}
@@ -34,7 +34,7 @@ export function StateView(props: StateViewProps) {
     <View style={styles.wrap}>
       <AppText
         center
-        color={props.state === 'error' ? colors.danger : colors.text}
+        color={props.state === 'error' ? colors.danger : colors.ink}
         accessibilityLiveRegion="polite"
       >
         {message}

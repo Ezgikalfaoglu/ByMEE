@@ -22,7 +22,7 @@ export function AppText({
       {...rest}
       style={[
         typography[variant],
-        { color: color ?? (muted ? colors.textMuted : colors.text) },
+        { color: color ?? (muted ? colors.muted : colors.ink) },
         center && { textAlign: 'center' },
         style,
       ]}

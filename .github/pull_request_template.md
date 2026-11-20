@@ -1,6 +1,6 @@
 ## Story
 
-BM-xxx: <story title>
+BM-xxx: <story title>  ·  Figma frame: NN · BM-xxx · <screen> · <owner>
 
 ## What changed
 
@@ -11,7 +11,8 @@ BM-xxx: <story title>
 - [ ] Button texts and messages match the “Must keep” column exactly
 - [ ] Each button goes to the right screen
 - [ ] Loading, empty and error states work
-- [ ] Mock data is labelled “Sample data” or “Simulation”
+- [ ] Simulated data shows “Simülasyon · sentetik veri”
+- [ ] The screen matches its Figma frame
 - [ ] `npm run typecheck` and `npm test` pass
 - [ ] Tested on iOS or Android (write which):
 - [ ] I changed only my own folder, or Ezgi agreed to the shared file change

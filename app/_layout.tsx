@@ -1,9 +1,10 @@
 import {
-  DMSans_400Regular,
-  DMSans_500Medium,
-  DMSans_700Bold,
+  PlusJakartaSans_400Regular,
+  PlusJakartaSans_500Medium,
+  PlusJakartaSans_600SemiBold,
+  PlusJakartaSans_700Bold,
   useFonts,
-} from '@expo-google-fonts/dm-sans';
+} from '@expo-google-fonts/plus-jakarta-sans';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
@@ -16,11 +17,16 @@ SplashScreen.preventAutoHideAsync();
 
 /**
  * Root layout (project setup by Ezgi).
- * BM-002 (Eda) adds the first-start check, the five tabs and the gate flow here.
- * BM-004 (Eda) wraps the app with AppStateProvider here.
+ * BM-006 (Eda) adds the first-start check, the four tabs and the 30 routes here
+ * (see docs/screens.md).
  */
 export default function RootLayout() {
-  const [fontsLoaded, fontError] = useFonts({ DMSans_400Regular, DMSans_500Medium, DMSans_700Bold });
+  const [fontsLoaded, fontError] = useFonts({
+    PlusJakartaSans_400Regular,
+    PlusJakartaSans_500Medium,
+    PlusJakartaSans_600SemiBold,
+    PlusJakartaSans_700Bold,
+  });
 
   useEffect(() => {
     if (fontsLoaded || fontError) SplashScreen.hideAsync();
@@ -35,7 +41,7 @@ export default function RootLayout() {
         <Stack
           screenOptions={{
             headerShown: false,
-            contentStyle: { backgroundColor: colors.ivory },
+            contentStyle: { backgroundColor: colors.bg },
           }}
         />
       </ToastProvider>
