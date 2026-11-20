@@ -3,20 +3,16 @@ import { rootScreenOptions, subScreenOptions } from '@/navigation/stackOptions';
 
 export const unstable_settings = { initialRouteName: 'index' };
 
-/**
- * BM-002: Profile tab. 03 Profile, 04 Connected data, 05 Permissions,
- * 06 Spending, 07 Digital twin, plus Edit profile (BM-011) and Delete my data (BM-039).
- */
-export default function ProfileLayout() {
+/** BM-006: Profil tab. 05 Profile, 06 Edit verified facts, 07 My documents, 08 Preferences, 09 Settings, 29 Active permissions. */
+export default function Layout() {
   return (
     <Stack screenOptions={subScreenOptions}>
       <Stack.Screen name="index" options={rootScreenOptions} />
-      <Stack.Screen name="edit" options={{ title: '' }} />
-      <Stack.Screen name="connected-data" options={{ title: '' }} />
+      <Stack.Screen name="facts" options={{ title: '' }} />
+      <Stack.Screen name="documents" options={{ title: '' }} />
+      <Stack.Screen name="preferences" options={{ title: '' }} />
+      <Stack.Screen name="settings" options={{ title: '' }} />
       <Stack.Screen name="permissions" options={{ title: '' }} />
-      <Stack.Screen name="spending" options={{ title: '' }} />
-      <Stack.Screen name="digital-twin" options={{ title: '' }} />
-      <Stack.Screen name="delete-data" options={{ title: '' }} />
     </Stack>
   );
 }

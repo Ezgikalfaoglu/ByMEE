@@ -3,11 +3,11 @@ import type { Edge } from 'react-native-safe-area-context';
 import { AppText, Button, Screen } from '@/components';
 
 export type ComingSoonLink = {
-  /** Development-only shortcut, e.g. "Get started → 02". */
+  /** Development-only shortcut, e.g. "Başlayalım → 02". */
   label: string;
   /** Plain string on purpose: these are temporary dev links, not checked against typed routes. */
   href: string;
-  /** push (default), replace (no way back) or dismissTo (close the gate flow). */
+  /** push (default), replace (no way back) or dismissTo (close the task flow). */
   mode?: 'push' | 'replace' | 'dismissTo';
 };
 
@@ -23,7 +23,7 @@ export type ComingSoonProps = {
 };
 
 /**
- * BM-002: placeholder for every route that is not built yet.
+ * BM-006: placeholder for every route that is not built yet.
  * The owner of the screen replaces this with the real screen in their own PR.
  * The links are only shown in development builds, so the navigation shell can be tested.
  */
@@ -46,7 +46,7 @@ export function ComingSoon({ id, name, header = false, tabBar = false, links = [
       <AppText muted>
         {id} · {name}
       </AppText>
-      <AppText variant="title">Coming soon</AppText>
+      <AppText variant="title">Yakında</AppText>
       {__DEV__
         ? links.map((link) => (
             <Button key={link.label} label={link.label} variant="secondary" onPress={() => go(link)} />

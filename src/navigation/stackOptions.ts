@@ -1,18 +1,18 @@
-import { colors } from '@/theme';
+import { colors, fonts } from '@/theme';
 
 /**
- * BM-002: shared header for sub screens (back arrow on iOS and Android).
+ * BM-006: shared header for sub screens (back arrow on iOS and Android).
  * Android's back button does the same as the arrow.
  * Screens that draw their own header later can set headerShown: false.
  */
 export const subScreenOptions = {
   headerShown: true,
   headerShadowVisible: false,
-  headerStyle: { backgroundColor: colors.ivory },
-  headerTintColor: colors.indigo,
-  headerTitleStyle: { fontFamily: 'DMSans_500Medium', color: colors.text },
+  headerStyle: { backgroundColor: colors.bg },
+  headerTintColor: colors.primary,
+  headerTitleStyle: { fontFamily: fonts.medium, color: colors.ink },
   headerBackButtonDisplayMode: 'minimal' as const,
-  contentStyle: { backgroundColor: colors.ivory },
+  contentStyle: { backgroundColor: colors.bg },
 };
 
 /** Tab roots have no header; the screen draws its own title. */

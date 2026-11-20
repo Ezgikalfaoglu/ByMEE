@@ -1,7 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
 import type { ComponentProps } from 'react';
-import { colors } from '@/theme';
+import { colors, fonts } from '@/theme';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
@@ -13,28 +13,25 @@ const icon =
   );
 
 /**
- * BM-002: five tabs. Labels are "Must keep" texts; icons and style are free.
- * Each tab folder has its own Stack, so tapping the active tab again
- * returns to the first screen of that tab.
+ * BM-006: four tabs (Figma component "Sekme çubuğu"). Labels are "Must keep" texts.
+ * Görevler → 03 My tasks, Yeni → 11 New task, Kayıtlar → 27 Audit log, Profil → 05 Profile.
+ * Each tab folder has its own Stack, so tapping the active tab again returns to its first screen.
  */
 export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.indigo,
-        tabBarStyle: { backgroundColor: colors.ivory },
-        tabBarLabelStyle: { fontFamily: 'DMSans_500Medium', fontSize: 12 },
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.muted,
+        tabBarStyle: { backgroundColor: colors.surface, borderTopColor: colors.line },
+        tabBarLabelStyle: { fontFamily: fonts.medium, fontSize: 11 },
       }}
     >
-      <Tabs.Screen name="home" options={{ title: 'Home', tabBarIcon: icon('home-outline') }} />
-      <Tabs.Screen name="explore" options={{ title: 'Explore', tabBarIcon: icon('compass-outline') }} />
-      <Tabs.Screen
-        name="assistant"
-        options={{ title: 'Assistant', tabBarIcon: icon('chatbubble-ellipses-outline') }}
-      />
-      <Tabs.Screen name="tasks" options={{ title: 'Tasks', tabBarIcon: icon('checkbox-outline') }} />
-      <Tabs.Screen name="profile" options={{ title: 'Profile', tabBarIcon: icon('person-outline') }} />
+      <Tabs.Screen name="home" options={{ title: 'Görevler', tabBarIcon: icon('list-outline') }} />
+      <Tabs.Screen name="new" options={{ title: 'Yeni', tabBarIcon: icon('add-circle-outline') }} />
+      <Tabs.Screen name="log" options={{ title: 'Kayıtlar', tabBarIcon: icon('document-text-outline') }} />
+      <Tabs.Screen name="profile" options={{ title: 'Profil', tabBarIcon: icon('person-outline') }} />
     </Tabs>
   );
 }
