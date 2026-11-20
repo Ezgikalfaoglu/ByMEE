@@ -30,7 +30,7 @@ export function ListRow({ title, subtitle, right, onPress }: ListRowProps) {
           </AppText>
         ) : null}
       </View>
-      {right ?? (onPress ? <Ionicons name="chevron-forward" size={20} color={colors.textMuted} /> : null)}
+      {right ?? (onPress ? <Ionicons name="chevron-forward" size={20} color={colors.muted} /> : null)}
     </Pressable>
   );
 }
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     gap: spacing.md,
     paddingVertical: spacing.sm,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: colors.border,
+    borderBottomColor: colors.line,
   },
   text: { flex: 1, gap: 2 },
   pressed: { opacity: 0.7 },

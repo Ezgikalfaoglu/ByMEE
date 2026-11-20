@@ -2,15 +2,15 @@ import { StyleSheet, View } from 'react-native';
 import { colors, fonts, radius, spacing } from '@/theme';
 import { AppText } from './AppText';
 
-export type TagTone = 'neutral' | 'info' | 'gate' | 'success' | 'danger';
+export type TagTone = 'neutral' | 'info' | 'waiting' | 'question' | 'success' | 'danger';
 
 export type TagProps = {
-  /** e.g. "Sample data", "Simulation", "Needs you", "Confirmed", "You told me". */
+  /** e.g. "Simülasyon · sentetik veri", "Seni bekliyor", "Tamamlandı". */
   label: string;
   tone?: TagTone;
 };
 
-/** Small read-only label. "gate" (Blush) is only for things waiting for the user. */
+/** Small read-only label. "waiting" and "question" are only for things waiting for the user. */
 export function Tag({ label, tone = 'neutral' }: TagProps) {
   const t = tones[tone];
   return (
@@ -23,9 +23,10 @@ export function Tag({ label, tone = 'neutral' }: TagProps) {
 }
 
 const tones: Record<TagTone, { bg: string; fg: string }> = {
-  neutral: { bg: colors.surfaceMuted, fg: colors.deepIndigo },
-  info: { bg: colors.softBlue, fg: colors.deepIndigo },
-  gate: { bg: colors.blush, fg: colors.deepIndigo },
+  neutral: { bg: colors.bg, fg: colors.muted },
+  info: { bg: colors.infoSoft, fg: colors.info },
+  waiting: { bg: colors.warnSoft, fg: colors.warn },
+  question: { bg: colors.amberSoft, fg: colors.amber },
   success: { bg: colors.successSoft, fg: colors.success },
   danger: { bg: colors.dangerSoft, fg: colors.danger },
 };

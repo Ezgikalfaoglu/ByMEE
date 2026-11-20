@@ -1,37 +1,36 @@
 /**
- * ByMEE colours. Each colour has one meaning (see "Design rules" in the
- * Design direction tab of the ByMEE User Stories doc).
+ * Beemy colours. Same tokens as the Figma variable collection "Beemy renkler"
+ * (page "Beemy — Görev Devri ekranları (v3)").
  *
- * - indigo: ByMEE and main actions
- * - blush:  gates only (ByMEE is waiting for the user)
- * - softBlue: information
- * - ivory: background
- * - danger: errors (never use blush for errors)
+ * - primary: Beemy and main actions
+ * - warn / amber: Beemy is waiting for the user (approval, question)
+ * - success: done, verified
+ * - danger: blocked, errors
+ * - info: information
+ * Each colour has a soft version for backgrounds.
  */
 export const colors = {
-  indigo: '#2E4A7D',
-  deepIndigo: '#1F2E4D',
-  blush: '#F6CDBD',
-  softBlue: '#DCE6F1',
-  ivory: '#FCF9F6',
-  white: '#FFFFFF',
-
-  /** Text */
-  text: '#1F2E4D',
-  textMuted: '#4A5670',
-  textOnIndigo: '#FFFFFF',
-
-  /** Lines and surfaces */
-  border: '#DADDE3',
+  bg: '#F6F5FB',
   surface: '#FFFFFF',
-  surfaceMuted: '#F3F1EE',
+  ink: '#1B1530',
+  muted: '#6B6880',
+  line: '#E7E4F0',
+  onPrimary: '#FFFFFF',
 
-  /** States */
-  danger: '#B42318',
-  dangerSoft: '#FDECEA',
-  success: '#2E7D4F',
-  successSoft: '#E6F4EC',
-  disabled: '#B8BFCC',
+  primary: '#4B3FD6',
+  primarySoft: '#EEEBFF',
+  success: '#1E9E63',
+  successSoft: '#E4F6ED',
+  warn: '#E07A12',
+  warnSoft: '#FFF1E2',
+  amber: '#B98204',
+  amberSoft: '#FFF5D6',
+  danger: '#D23C68',
+  dangerSoft: '#FDE8EF',
+  info: '#2F7FE0',
+  infoSoft: '#E6F0FD',
+
+  disabled: '#B8B5C8',
 } as const;
 
 export type ColorName = keyof typeof colors;
