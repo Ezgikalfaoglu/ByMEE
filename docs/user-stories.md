@@ -1,122 +1,124 @@
-# ByMEE user stories
+# Beemy user stories
 
-The full stories are in the **[ByMEE User Stories](https://docs.google.com/document/d/1YOpgs57Em4j-3gEsBUu_N7C90nZ8SG8m8ZYjfuopw6g/edit)** Google Doc. Progress is in the **[ByMEE Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit)**.
-This file is only an index. If something here is different from the doc, the doc is right.
+The full stories (backlog and detailed version) are in the **[Beemy User Stories](https://docs.google.com/document/d/1fudNVUfQvUdLdeaM4BntRtCpyhUhFH0DhF2yhvB9TTI/edit)** Google Doc. Progress is in the **[Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit)**. Screens are on the Figma page **[Beemy — Görev Devri ekranları (v3)](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2188-2324)**.
+This file is only an index. Story ID, title, owner, sprint and screen number are the same in all four places. If something here is different, the Sprint Tracker is right.
 
-## How to read a story
+Use the story ID in every pull request title, for example `feat(BM-012): New task`.
 
-- **Backlog tab:** one row per story. The “Must keep” column is fixed: button texts, messages, where each button goes and the information the screen must show. Text in quotes is exact.
-- **Design direction tab:** how the new design should look (the Thread idea, colours, rules per screen). Everything outside “Must keep” can change with the design.
-- **GitHub setup tab:** branches, folders, file names and routes.
+## Sprint 1 (16 Nov 2026 to 27 Nov 2026) · İP1, İP2 · month 1
 
-Use the story ID in every pull request title, for example `feat(BM-006): profile setup form`.
+| ID | Story | Owner | Screen | Work package |
+|---|---|---|---|---|
+| BM-001 | Requirements and user story documents ✓ | Ezgi | — | İP1 |
+| BM-002 | Repository and project setup ✓ | Ezgi | — | İP2 |
+| BM-003 | Shared data contracts and mock services ✓ | Berfin | — | İP3 |
+| BM-004 | Task definition schema | Eda | — | İP1 |
+| BM-005 | Scenario schema and scoring rules | Melike | — | İP1 |
+| BM-006 | Navigation shell, routes and TR/EN text files | Eda | all | İP2 |
+| BM-007 | Welcome | Melike | 01 | İP2 |
 
-## Sprint 1 (26 Oct to 6 Nov 2026): Foundation
+## Sprint 2 (30 Nov 2026 to 11 Dec 2026) · İP1, İP2 · month 1
 
-| ID | Story | Owner |
-|---|---|---|
-| BM-001 | Requirements and user story documents | Ezgi |
-| BM-002 | Navigation shell with five tabs | Eda |
-| BM-003 | Shared data contracts and mock services | Berfin |
-| BM-004 | App state, storage and module events | Eda |
-| BM-005 | Welcome and onboarding | Melike |
+| ID | Story | Owner | Screen | Work package |
+|---|---|---|---|---|
+| BM-008 | Language | Melike | 02 | İP2 |
+| BM-009 | Scenario drafts: career, moving, messaging and calendar | Eda | — | İP1 |
+| BM-010 | Scenario drafts: shopping and returns, travel, daily appointments | Berfin | — | İP1 |
+| BM-011 | Cross-check expected results and translations | Shared | — | İP1 |
+| BM-012 | New task | Eda | 11 | İP2 |
+| BM-013 | Authority setup | Berfin | 21 | İP2 |
 
-## Sprint 2 (9 Nov to 20 Nov 2026): First screens and the Thread
+## Sprint 3 (14 Dec 2026 to 25 Dec 2026) · İP2 · months 1-2
 
-| ID | Story | Owner |
-|---|---|---|
-| BM-006 | Profile setup | Melike |
-| BM-007 | Home: today's Thread | Eda |
-| BM-008 | Research request | Eda |
-| BM-009 | Assistant chat | Berfin |
-| BM-010 | Test plan and test cases | Ezgi |
+| ID | Story | Owner | Screen | Work package |
+|---|---|---|---|---|
+| BM-014 | My tasks | Melike | 03 | İP2 |
+| BM-015 | Profile | Melike | 05 | İP2 |
+| BM-016 | Task summary | Eda | 12 | İP2 |
+| BM-017 | Edit task | Eda | 13 | İP2 |
+| BM-018 | Approval before action | Berfin | 22 | İP2 |
+| BM-019 | Targeted question | Berfin | 23 | İP2 |
+| BM-020 | Test plan and acceptance checks | Shared | — | İP2 |
 
-## Sprint 3 (23 Nov to 4 Dec 2026): Profile, consent, research, voice, gate
+## Sprint 4 (28 Dec 2026 to 8 Jan 2027) · İP2, İP3, İP4 · month 2
 
-| ID | Story | Owner |
-|---|---|---|
-| BM-011 | Personal profile view and edit | Melike |
-| BM-012 | Consent and permissions | Melike |
-| BM-013 | Understand the request and prefill | Eda |
-| BM-014 | Research progress | Eda |
-| BM-015 | Voice assistant | Berfin |
-| BM-016 | Gate: review and approve an action | Berfin |
+| ID | Story | Owner | Screen | Work package |
+|---|---|---|---|---|
+| BM-021 | Edit verified facts | Melike | 06 | İP2 |
+| BM-022 | Request parser (TR and EN) with tests | Eda | — | İP3 |
+| BM-023 | Execution layer skeleton | Berfin | — | İP4 |
 
-## Sprint 4 (7 Dec to 18 Dec 2026): Data sources, preferences, shortlist, tasks, guard
+## Sprint 5 (11 Jan 2027 to 22 Jan 2027) · İP3, İP4 · months 2-3
 
-| ID | Story | Owner |
-|---|---|---|
-| BM-017 | Connected data sources | Melike |
-| BM-018 | Digital twin preferences | Melike |
-| BM-019 | Gate: shortlist | Eda |
-| BM-020 | Task list | Eda |
-| BM-021 | Edit action limits before approval | Berfin |
-| BM-022 | Gate guard and receipts | Berfin |
+| ID | Story | Owner | Screen | Work package |
+|---|---|---|---|---|
+| BM-024 | My documents | Melike | 07 | İP2 |
+| BM-025 | Preferences | Melike | 08 | İP2 |
+| BM-026 | Planner and shared tool interface | Eda | — | İP3 |
+| BM-027 | Plan and progress | Eda | 14 | İP3 |
+| BM-028 | Simulator core: reset, event triggers, records | Berfin | — | İP3 |
+| BM-029 | Authority checks: action, recipient, data, time, amount | Berfin | — | İP4 |
 
-## Sprint 5 (21 Dec 2026 to 1 Jan 2027): Light sprint
+## Sprint 6 (25 Jan 2027 to 5 Feb 2027) · İP3, İP4 · month 3
 
-| ID | Story | Owner |
-|---|---|---|
-| BM-023 | Bank statement upload | Melike |
-| BM-024 | Decision matrix and scoring | Eda |
-| BM-025 | Call simulation | Berfin |
+| ID | Story | Owner | Screen | Work package |
+|---|---|---|---|---|
+| BM-030 | Settings | Melike | 09 | İP2 |
+| BM-031 | Notifications | Melike | 04 | İP2 |
+| BM-032 | Search, compare and document tools | Eda | — | İP3 |
+| BM-033 | Options | Eda | 15 | İP3 |
+| BM-034 | Option details | Eda | 16 | İP3 |
+| BM-035 | Re-check before binding action and transaction ID | Berfin | — | İP4 |
+| BM-036 | Condition A and B switch | Berfin | — | İP4 |
+| BM-037 | No valid option | Berfin | 24 | İP4 |
 
-## Sprint 6 (4 Jan to 15 Jan 2027): Spending, matrix, task details, call results
+## Sprint 7 (8 Feb 2027 to 19 Feb 2027) · İP3, İP4 · month 3
 
-| ID | Story | Owner |
-|---|---|---|
-| BM-026 | Spending insights | Melike |
-| BM-027 | Edit, confirm or remove preferences | Melike |
-| BM-028 | Matrix weights and limits | Eda |
-| BM-029 | Task details: the task Thread | Eda |
-| BM-030 | Conversation analysis | Berfin |
-| BM-031 | Gate: offer review | Berfin |
+| ID | Story | Owner | Screen | Work package |
+|---|---|---|---|---|
+| BM-038 | Messaging, calendar and tracking tools | Eda | — | İP3 |
+| BM-039 | Document draft | Eda | 17 | İP3 |
+| BM-040 | Messages | Eda | 18 | İP3 |
+| BM-041 | New limit | Berfin | 25 | İP4 |
+| BM-042 | Result | Berfin | 26 | İP4 |
+| BM-043 | Edge case tests | Berfin | — | İP4 |
+| BM-044 | Bilingual UI review and accessibility | Melike | all | İP2 |
+| BM-045 | One end-to-end flow per domain | Shared | — | İP3 |
 
-## Sprint 7 (18 Jan to 29 Jan 2027): Alerts, comparison, scheduling
+## Sprint 8 (22 Feb 2027 to 5 Mar 2027) · İP5 · month 4
 
-| ID | Story | Owner |
-|---|---|---|
-| BM-032 | Recurring payment detection | Melike |
-| BM-033 | Alerts: ahead on the Thread | Melike |
-| BM-034 | Gate: comparison and choice | Eda |
-| BM-035 | Gate: pick a time | Berfin |
-| BM-036 | Booking confirmation and management | Berfin |
+| ID | Story | Owner | Screen | Work package |
+|---|---|---|---|---|
+| BM-046 | Freeze scenario set v1.0 and split pilot inputs | Shared | — | İP5 |
+| BM-047 | Pilot runs and fixes | Shared | — | İP5 |
+| BM-048 | Evaluation summary | Melike | 10 | İP5 |
+| BM-049 | Error, loading and empty states | Melike | all | İP2 |
+| BM-050 | Scenario library | Eda | 19 | İP5 |
+| BM-051 | Run setup | Eda | 20 | İP5 |
+| BM-052 | Audit log | Berfin | 27 | İP4 |
+| BM-053 | Log entry details | Berfin | 28 | İP4 |
+| BM-054 | Run log | Berfin | 30 | İP5 |
 
-## Sprint 8 (1 Feb to 12 Feb 2027): Integration and MVP demo
+## Sprint 9 (8 Mar 2027 to 19 Mar 2027) · İP5 · month 4
 
-| ID | Story | Owner |
-|---|---|---|
-| BM-037 | Chat and voice requests become tasks and gates | Berfin |
-| BM-038 | Act on, dismiss or snooze alerts | Melike |
-| BM-039 | Delete my data | Melike |
-| BM-040 | Live Thread updates | Eda |
-| BM-041 | End-to-end demo flow | Shared |
-| BM-042 | Integration testing and MVP validation | Ezgi |
-| BM-043 | Usability test round 1 | Ezgi |
+| ID | Story | Owner | Screen | Work package |
+|---|---|---|---|---|
+| BM-055 | Run the 360 evaluation runs | Shared | — | İP5 |
+| BM-056 | Bug fixing and stabilisation | Shared | — | İP5 |
+| BM-057 | Active permissions | Berfin | 29 | İP4 |
 
-## Sprint 9 (15 Feb to 26 Feb 2027): Real integrations 1
+## Sprint 10 (22 Mar 2027 to 2 Apr 2027) · İP6 · month 5
 
-| ID | Story | Owner |
-|---|---|---|
-| BM-044 | Read real PDF statements | Melike |
-| BM-045 | Real research data source | Eda |
-| BM-046 | Speech to text and text to speech | Berfin |
+| ID | Story | Owner | Screen | Work package |
+|---|---|---|---|---|
+| BM-058 | Primary and secondary metrics per language | Melike | — | İP6 |
+| BM-059 | Paired bootstrap confidence intervals | Melike | — | İP6 |
+| BM-060 | Stop and question scenario review, violations | Eda | — | İP6 |
+| BM-061 | Demo build polish | Shared | all | İP2 |
 
-## Sprint 10 (1 Mar to 12 Mar 2027): Real integrations 2
+## Sprint 11 (5 Apr 2027 to 16 Apr 2027) · İP6 · month 5
 
-| ID | Story | Owner |
-|---|---|---|
-| BM-047 | Secure storage and learning from choices | Melike |
-| BM-048 | AI understanding of requests | Eda |
-| BM-049 | Google Calendar connection | Berfin |
-| BM-050 | Automated tests and performance check | Ezgi |
-
-## Sprint 11 (15 Mar to 26 Mar 2027): Release
-
-| ID | Story | Owner |
-|---|---|---|
-| BM-051 | Real phone call (stretch goal) | Berfin |
-| BM-052 | Privacy and approval compliance check | Ezgi |
-| BM-053 | Usability test round 2 and final evaluation | Ezgi |
-| BM-054 | Release, final report and demo | Ezgi |
-| BM-055 | Bug fixing and stabilisation | Shared |
+| ID | Story | Owner | Screen | Work package |
+|---|---|---|---|---|
+| BM-062 | Re-runnable scenario pack and analysis scripts | Shared | — | İP6 |
+| BM-063 | Final report and demo | Ezgi | — | Kapanış |

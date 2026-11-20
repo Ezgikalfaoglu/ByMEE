@@ -1,4 +1,4 @@
-/** 8 px grid. Screens use 20 px side padding. */
+/** 8 px grid. Screens use 24 px side padding (same as Figma). */
 export const spacing = {
   xs: 4,
   sm: 8,
@@ -6,13 +6,13 @@ export const spacing = {
   lg: 24,
   xl: 32,
   xxl: 48,
-  screen: 20,
+  screen: 24,
 } as const;
 
 export const radius = {
   sm: 8,
   md: 12,
-  card: 16,
+  card: 18,
   pill: 999,
 } as const;
 

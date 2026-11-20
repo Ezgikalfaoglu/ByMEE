@@ -7,13 +7,13 @@ export type CardProps = {
   onPress?: () => void;
   /** Read by screen readers when the card is tappable. */
   accessibilityLabel?: string;
-  /** "gate" uses Blush. Use it only for things ByMEE needs the user to decide. */
-  tone?: 'default' | 'info' | 'gate';
+  /** "waiting" is only for things Beemy needs the user to decide (approval, question). */
+  tone?: 'default' | 'info' | 'waiting';
   style?: StyleProp<ViewStyle>;
 };
 
 export function Card({ children, onPress, accessibilityLabel, tone = 'default', style }: CardProps) {
-  const toneStyle = tone === 'gate' ? styles.gate : tone === 'info' ? styles.info : null;
+  const toneStyle = tone === 'waiting' ? styles.waiting : tone === 'info' ? styles.info : null;
 
   if (onPress) {
     return (
@@ -35,11 +35,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     borderRadius: radius.card,
     borderWidth: 1,
-    borderColor: colors.border,
+    borderColor: colors.line,
     padding: spacing.md,
     gap: spacing.sm,
   },
-  info: { backgroundColor: colors.softBlue, borderColor: colors.softBlue },
-  gate: { backgroundColor: colors.blush, borderColor: colors.blush },
+  info: { backgroundColor: colors.infoSoft, borderColor: colors.infoSoft },
+  waiting: { backgroundColor: colors.warnSoft, borderColor: colors.warn },
   pressed: { opacity: 0.9 },
 });

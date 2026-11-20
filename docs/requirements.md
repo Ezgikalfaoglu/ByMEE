@@ -1,74 +1,87 @@
-# ByMEE requirements
+# Beemy requirements
 
-Owner: Ezgi (PM, BA, QA) · Story: BM-001 · Last update: 26 Oct 2026
+Owner: Ezgi (PM) · Story: BM-001 · Last update: 20 Nov 2026
 
-The detailed stories are in the [ByMEE User Stories](https://docs.google.com/document/d/1YOpgs57Em4j-3gEsBUu_N7C90nZ8SG8m8ZYjfuopw6g/edit) doc. Progress is in the [ByMEE Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit). This file gives the big picture.
+The backlog and the detailed stories are in the [Beemy User Stories](https://docs.google.com/document/d/1fudNVUfQvUdLdeaM4BntRtCpyhUhFH0DhF2yhvB9TTI/edit) doc. Progress is in the [Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit). Screens are on the Figma page [Beemy — Görev Devri ekranları (v3)](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2188-2324). This file gives the big picture.
 
 ## 1. Vision
 
-ByMEE is a personal assistant app. It does the research and planning for everyday tasks (for example, finding a Pilates studio near home within a budget), compares the options, calls or messages the provider, and books a time that fits the user's day. **Nothing happens without the user's OK.**
+Beemy is a general-purpose personal AI assistant. The user describes a multi-step task in Turkish or English (for example “find a hybrid software internship in Ankara, adapt my CV to English and apply”). Beemy turns it into a task definition, plans the tool steps, prepares documents, talks to the other party and carries out the actions **only within the authority the user gave**.
 
-The design idea is **the Thread**: the user's day as one vertical line. Every event, every task ByMEE works on and every decision the user must make is a knot on that line. A decision point is a **gate**. Gates are the only place that uses the Blush colour.
+The authority check is done by code in an execution layer, not by the language model. Beemy asks the user when required information is missing or new authority is needed, and stops with a reason when no valid option is left.
 
-## 2. Users
+## 2. Research question (TÜBİTAK 2209-A)
 
-- Main persona: **Elif**, lives in Çankaya, Ankara. Busy, wants more free time, careful with money. Prices are in Turkish lira (₺).
-- The app language is English.
+The project is the prototype of the TÜBİTAK 2209-A proposal “Kişisel Yapay Zekâ Asistanlarında Görev Devri ve Yetki Denetimi”. It compares two conditions on the same prototype:
 
-## 3. Scope
+- **A · Approval before action:** the user approves every binding action.
+- **B · Task delegation:** the authority given at the start is enough for binding actions within the limits.
 
-### MVP (Sprints 1 to 8, demo on 12 Feb 2027)
+30 scenarios in six domains (career, moving, messaging and calendar, shopping and returns, travel, daily appointments), each in Turkish and English, are run 3 times in both conditions: 360 runs. The primary target: in condition B, at least 15 of the 18 completable scenarios are completed correctly, in both languages and all three repetitions, with zero violations and zero extra user decisions.
+
+## 3. Users
+
+- Sample persona: **Elif Yılmaz**, Çankaya, Ankara (synthetic). Prices are in TL.
+- The app works in Turkish and English. Documents and messages can use a different language from the app.
+
+## 4. Scope
 
 | Area | Screens | Owner |
 |---|---|---|
-| Personal intelligence: onboarding, profile, connected data, permissions, spending, preferences (digital twin), alerts | 01 to 08 | Melike |
-| Research and tasks: Home (today's Thread), research request, progress, shortlist, decision matrix, tasks, task details, comparison | 09 to 16 | Eda |
-| Assistant and actions: chat, voice, gate flow (approve, call, summary, offer, pick a time, booked) | 17 to 24 | Berfin |
-| Requirements, test plan, test cases, integration and usability tests, release | all | Ezgi |
+| Start, profile and home: welcome, language, my tasks, notifications, profile, verified facts, documents, preferences, settings, evaluation summary | 01–10 | Melike |
+| Task, plan and tools: new task, task summary, edit task, plan and progress, options, option details, document draft, messages, scenario library, run setup | 11–20 | Eda |
+| Authority, approval and records: authority setup, approval before action, targeted question, no valid option, new limit, result, audit log, log entry details, active permissions, run log | 21–30 | Berfin |
+| Project management: documents, repositories, main, PR reviews, final report | — | Ezgi |
 
-In the MVP, data, calls and bookings are **simulated** with mock services. The end-to-end demo goes from profile setup to a booked class (BM-041).
+All data, people, companies and actions are **synthetic**. Every simulated action is written to the simulator record and shown with the badge “Simülasyon · sentetik veri”.
 
-### Period 2 (Sprints 9 to 11)
+Out of scope: real payments, real e-mail or phone calls, real personal accounts, human participants.
 
-Real PDF statements, a real research data source, speech to text, secure storage, AI request understanding, Google Calendar, automated tests. A real phone call is a stretch goal (BM-051).
+## 5. Rules for every feature
 
-### Out of scope
+1. **Authority by code.** The language model only proposes actions. Every state-changing call goes through the execution layer and is checked for action type, recipient, data scope, current terms, time and amount.
+2. **Separate actions.** Preparing a document and sending it are separate permissions. Payment, deposit, contract and data sharing are separate action types.
+3. **Verified facts only.** Documents use only verified profile facts. Adding new experience or skills is an error.
+4. **Honest results.** Success is shown only after the simulator record is verified.
+5. **One question.** When required information is missing, Beemy asks one targeted question and does nothing until it is answered.
+6. **States.** Every screen has loading, empty and error states.
+7. **Fixed texts.** Texts in the “Must keep” lists are used exactly as written.
 
-Real payments, a real bank login, sign in and accounts on a server, other languages, tablets.
-
-## 4. Rules for every feature
-
-1. **Consent first.** A feature that uses personal data checks the user's permission before it reads the data.
-2. **Gates.** Calls, emails, bookings, accepting an offer, sharing personal data and payments always need the user's approval first. One approval is for one action.
-3. **Honest simulation.** Every simulated action and every sample dataset shows the label “Simulation” or “Sample data”.
-4. **States.** Every screen has loading, empty and error states.
-5. **Fixed texts.** Button texts and messages in the “Must keep” column are used exactly as written.
-
-## 5. Non-functional requirements
+## 6. Non-functional requirements
 
 - Runs on iOS and Android with Expo Go (Expo SDK 58).
-- Body text at least 14 pt, captions at least 12 pt, touch targets at least 44 × 44, every icon button has a text label.
+- Body text at least 14 pt, captions at least 12 pt, touch targets at least 44 × 44.
 - No personal data in logs. API keys only in `.env`, never in the repo.
-- Unit tests for logic in `lib/` folders.
+- Unit tests for logic files.
 
-## 6. Technology
+## 7. Technology
 
-React Native, Expo SDK 58, Expo Router, TypeScript, npm. Node 22.14.0. Shared theme in `src/theme/` and shared components in `src/components/`.
+React Native, Expo SDK 58, Expo Router, TypeScript, npm, Node 22.14.0. Font: Plus Jakarta Sans. Shared theme in `src/theme/` (same tokens as the Figma variable collection “Beemy renkler”) and shared components in `src/components/`.
 
-## 7. Plan
+## 8. Plan
 
-11 two-week sprints, from 26 Oct 2026 to 26 Mar 2027. Sprint 5 is a light sprint (New Year). MVP demo on 12 Feb 2027, code freeze on 24 Mar 2027.
+11 two-week sprints from 16 Nov 2026 to 16 Apr 2027, matching the TÜBİTAK work packages:
 
-## 8. Definition of Done
+| Work package | What | Sprints |
+|---|---|---|
+| İP1 | Task definition, scenario schema, expected results | 1–2 |
+| İP2 | Mobile screens | 1–4 (polish later) |
+| İP3 | Planner, tools and simulator | 4–7 |
+| İP4 | Authority checks and edge case tests | 4–7 |
+| İP5 | Freeze scenario set and 360 runs | 8–9 |
+| İP6 | Analysis | 10–11 |
+
+Sprint 4 (28 Dec to 8 Jan) is a light sprint (New Year).
+
+## 9. Definition of Done
 
 - Merged to `main` through a pull request reviewed by Ezgi.
-- Every “Must keep” line tested by Ezgi.
-- Unit tests for files in `lib/`.
-- Works on iOS and Android.
+- Every “Must keep” line checked.
+- Unit tests for logic files.
+- Works on iOS and Android, both languages checked.
+- The screen matches its Figma frame.
 
-## 9. Sign-off
-
-Vision, scope and the MVP line are agreed by the whole team.
+## 10. Sign-off
 
 - [ ] Ezgi
 - [ ] Melike

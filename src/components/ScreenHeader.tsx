@@ -51,7 +51,7 @@ function IconButton({
       hitSlop={8}
       style={styles.icon}
     >
-      <Ionicons name={icon} size={24} color={colors.deepIndigo} />
+      <Ionicons name={icon} size={24} color={colors.ink} />
     </Pressable>
   );
 }

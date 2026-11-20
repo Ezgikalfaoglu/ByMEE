@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ByMEE",
+    "name": "Beemy",
     "slug": "bymee",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,7 +11,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#FCF9F6",
+        "backgroundColor": "#F6F5FB",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -29,7 +29,7 @@
         {
           "image": "./assets/splash-icon.png",
           "imageWidth": 160,
-          "backgroundColor": "#FCF9F6"
+          "backgroundColor": "#F6F5FB"
         }
       ]
     ],

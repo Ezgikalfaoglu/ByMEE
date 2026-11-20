@@ -43,7 +43,7 @@ export function Screen({
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.ivory },
+  safe: { flex: 1, backgroundColor: colors.bg },
   content: { paddingHorizontal: spacing.screen, paddingVertical: spacing.md, gap: spacing.md },
   fill: { flex: 1 },
   footer: {

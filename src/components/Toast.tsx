@@ -43,7 +43,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           style={[styles.host, { bottom: insets.bottom + spacing.xl }]}
         >
           <View style={styles.toast} accessibilityLiveRegion="polite" accessibilityRole="alert">
-            <AppText color={colors.white} style={styles.message}>
+            <AppText color={colors.onPrimary} style={styles.message}>
               {toast.message}
             </AppText>
             {toast.actionLabel ? (
@@ -56,7 +56,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                   setToast(null);
                 }}
               >
-                <AppText variant="bodyStrong" color={colors.blush}>
+                <AppText variant="bodyStrong" color={colors.primarySoft}>
                   {toast.actionLabel}
                 </AppText>
               </Pressable>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.md,
-    backgroundColor: colors.deepIndigo,
+    backgroundColor: colors.ink,
     borderRadius: radius.md,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm + 4,
