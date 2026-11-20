@@ -1,30 +1,23 @@
 /**
- * Mock service settings (BM-003).
+ * Mock service settings (BM-003, Berfin).
  *
  * Every mock service:
  * - waits `delayMs` (600 ms by default) so loading states are visible,
  * - can be told to fail its next call, so error states can be tested,
  * - marks every result with `simulated: true`.
  *
- * In Period 2 a real implementation replaces a mock by flipping `useMocks`
- * for that service; screens do not change.
+ * Each module adds its own service name here in the PR that adds the mock.
  */
 
 export type ServiceName =
-  | 'profile'
-  | 'preferences'
-  | 'consent'
-  | 'research'
-  | 'tasks'
-  | 'actions'
-  | 'calls'
-  | 'offers'
-  | 'calendar'
-  | 'booking';
+  | 'profile' // Melike: verified facts, documents, preferences
+  | 'tasks' // Eda: task definitions, plans, options
+  | 'tools' // Eda: search, compare, documents, messaging, calendar
+  | 'simulator' // Berfin: synthetic world, records
+  | 'execution' // Berfin: authority checks, audit log
+  | 'research'; // Eda and Melike: scenarios, runs, evaluation
 
 export type MockConfig = {
-  /** Which services use the mock implementation. All true in the MVP. */
-  useMocks: Record<ServiceName, boolean>;
   /** How long a mock waits before answering. */
   delayMs: number;
   /** Services whose next call should fail. Cleared after one failure. */
@@ -32,28 +25,12 @@ export type MockConfig = {
 };
 
 export const mockConfig: MockConfig = {
-  useMocks: {
-    profile: true,
-    preferences: true,
-    consent: true,
-    research: true,
-    tasks: true,
-    actions: true,
-    calls: true,
-    offers: true,
-    calendar: true,
-    booking: true,
-  },
   delayMs: 600,
   failNext: {},
 };
 
-/**
- * Make the next call of a service fail, e.g. in a test or from the
- * "Reset demo data" dev menu (BM-004).
- *   failNextCall('calls', 'The call didn’t go through.')
- */
-export function failNextCall(service: ServiceName, message = 'Something went wrong.') {
+/** Make the next call of a service fail, e.g. failNextCall('tools', 'Araç yanıt vermedi.'). */
+export function failNextCall(service: ServiceName, message = 'Bir şeyler ters gitti.') {
   mockConfig.failNext[service] = message;
 }
 
@@ -62,9 +39,8 @@ export function setMockDelay(ms: number) {
   mockConfig.delayMs = ms;
 }
 
-/** Back to defaults (tests call this in afterEach). */
+/** Back to defaults (tests call this in beforeEach). */
 export function resetMockConfig() {
   mockConfig.delayMs = 600;
   mockConfig.failNext = {};
-  for (const key of Object.keys(mockConfig.useMocks) as ServiceName[]) mockConfig.useMocks[key] = true;
 }

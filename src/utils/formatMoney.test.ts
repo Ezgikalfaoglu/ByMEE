@@ -28,6 +28,6 @@ describe('formatMoney', () => {
   });
 
   it('adds the per-month suffix', () => {
-    expect(formatMoneyPerMonth(3240)).toBe('₺3.240/month');
+    expect(formatMoneyPerMonth(3240)).toBe('₺3.240/ay');
   });
 });

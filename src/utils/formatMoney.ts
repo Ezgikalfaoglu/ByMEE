@@ -1,4 +1,4 @@
-import type { Money } from '@/types/models';
+import type { Money } from '@/types/common';
 
 /**
  * Formats an amount in Turkish lira the way the stories show it: "₺3.600".
@@ -8,7 +8,7 @@ import type { Money } from '@/types/models';
  *   formatMoney(3600.5) → "₺3.600,50".
  * - Negative amounts keep the sign in front: "-₺250".
  *
- * Money is always stored as a number in TRY (see src/types/models.ts).
+ * Money is always stored as a number in TRY (see src/types/common.ts).
  */
 export function formatMoney(amount: Money): string {
   if (!Number.isFinite(amount)) return '₺0';
@@ -28,7 +28,7 @@ export function formatMoney(amount: Money): string {
   return `${sign}₺${wholeText}${kurusText}`;
 }
 
-/** "₺3.240/month" style label used on 19, 21 and 22. */
+/** "₺3.240/ay" style label, e.g. on Options (15) and Option details (16). */
 export function formatMoneyPerMonth(amount: Money): string {
-  return `${formatMoney(amount)}/month`;
+  return `${formatMoney(amount)}/ay`;
 }
