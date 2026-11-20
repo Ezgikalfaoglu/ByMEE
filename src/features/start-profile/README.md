@@ -13,12 +13,12 @@ Ekran dosyasının adı, Figma frame adı ve story başlığı aynıdır. PR ba�
 | 01 | 01 · BM-007 · Welcome · Melike | `/onboarding` | 1 | `screens/WelcomeScreen.tsx` |
 | 02 | 02 · BM-008 · Language · Melike | `/onboarding/language` | 2 | `screens/LanguageScreen.tsx` |
 | 03 | 03 · BM-014 · My tasks · Melike | `/home` | 3 | `screens/MyTasksScreen.tsx` |
-| 04 | 04 · BM-031 · Notifications · Melike | `/notifications` | 6 | `screens/NotificationsScreen.tsx` |
+| 04 | 04 · BM-031 · Notifications · Melike | `/home/notifications` | 6 | `screens/NotificationsScreen.tsx` |
 | 05 | 05 · BM-015 · Profile · Melike | `/profile` | 3 | `screens/ProfileScreen.tsx` |
 | 06 | 06 · BM-021 · Edit verified facts · Melike | `/profile/facts` | 4 | `screens/EditFactsScreen.tsx` |
 | 07 | 07 · BM-024 · My documents · Melike | `/profile/documents` | 5 | `screens/DocumentsScreen.tsx` |
 | 08 | 08 · BM-025 · Preferences · Melike | `/profile/preferences` | 5 | `screens/PreferencesScreen.tsx` |
-| 09 | 09 · BM-030 · Settings · Melike | `/settings` | 6 | `screens/SettingsScreen.tsx` |
+| 09 | 09 · BM-030 · Settings · Melike | `/profile/settings` | 6 | `screens/SettingsScreen.tsx` |
 | 10 | 10 · BM-048 · Evaluation summary · Melike | `/research/summary` | 8 | `screens/EvaluationSummaryScreen.tsx` |
 
 ## Diğer story'lerim
