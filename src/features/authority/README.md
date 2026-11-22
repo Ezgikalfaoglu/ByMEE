@@ -40,10 +40,11 @@ Ortak story'ler (ekipçe): BM-011 Cross-check expected results and translations,
 
 ```
 src/features/authority/
-  screens/      her ekran için bir dosya, adı Screen.tsx ile biter
+  screens/      her ekran için bir dosya, adı Screen.tsx ile biter (+ *.test.tsx)
   components/   yalnızca bu klasörde kullanılan parçalar
   data/         mock veri ve ekran metinleri (*.mock.ts, *.texts.ts)
   lib/          arayüzsüz mantık + *.test.ts
+  assets/       Figma'dan dışa aktarılan görseller (maskot halleri)
   types.ts      yalnızca bu klasörün tipleri
   index.ts      ekranları dışa aktarır (app/ rotaları buradan import eder)
   README.md     bu dosya
