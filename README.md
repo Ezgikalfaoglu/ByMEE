@@ -2,7 +2,7 @@
 
 **Tek repo, tek lockfile, tek tasarım sistemi, 51 mobil ekran.** Beemy, TÜBİTAK 2209-A önerisi “Kişisel Yapay Zekâ Asistanlarında Görev Devri ve Yetki Denetimi”nin prototipidir.
 
-User story'ler: [Beemy User Stories](https://docs.google.com/document/d/1Xb_IfONw5j9WiAaj7AdW68IzL1zRA8XK0xzPr3ZsLLw/edit) · İlerleme: [Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit) · Ekranlar: [Figma · Beemy · Ekranlar v6](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2222-1077) · Özet: [`docs/requirements.md`](docs/requirements.md), [`docs/user-stories.md`](docs/user-stories.md), [`docs/screens.md`](docs/screens.md)
+User story'ler: [Beemy User Stories](https://docs.google.com/document/d/19EbWZJk7rDjSQbAETuhW1OGU2buwmElGMRwyxlVzG04/edit) · İlerleme: [Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit) · Ekranlar: [Figma · Beemy · Ekranlar v6](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2222-1077) · Özet: [`docs/requirements.md`](docs/requirements.md), [`docs/user-stories.md`](docs/user-stories.md), [`docs/screens.md`](docs/screens.md)
 
 ## Ortak teknoloji ve sürüm sözleşmesi (üç kişi için zorunlu)
 
