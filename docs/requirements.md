@@ -26,11 +26,11 @@ The project is the prototype of the TÜBİTAK 2209-A proposal “Kişisel Yapay 
 
 ## 4. Scope
 
-| Area | Screens | Owner |
+| Area (17 screens each) | Screens | Owner |
 |---|---|---|
 | Account, home and personalisation: welcome, language, sign up, verify code, log in, forgot password, permissions and data sources, voice introduction, home, for you, profile, what I learned, decision twin, connected sources, rules, settings, evaluation summary | 01–17 | Melike |
-| Voice, task flow, research and messages: voice assistant, type mode, my tasks, task summary, live plan, agents, recommendations, comparison table, travel plan, price tracking, offers, inbox summary, reply draft, message search, scenario library, run setup, A/B comparison | 18–34 | Eda |
-| Authority, approval, completion, automation and records: authority setup, approval before action, payment approval, data sharing approval, voice question, emergency stop, plan changed, no valid option, new limit, task completed, activity log, log entry details, workflow discovery, teach by showing, learned workflows, permissions and approval rules, run log | 35–51 | Berfin |
+| Voice assistant, task conversation, authority, approval and records: voice assistant, type mode, task summary, live plan, agents, authority setup, approval before action, payment approval, data sharing approval, voice question, emergency stop, plan changed, no valid option, new limit, task completed, activity log, log entry details | 18, 19, 21–23, 35–46 | Berfin |
+| Tasks, tools, messages, research and automation: my tasks, recommendations, comparison table, travel plan, price tracking, offers, inbox summary, reply draft, message search, scenario library, run setup, A/B comparison, workflow discovery, teach by showing, learned workflows, permissions and approval rules, run log | 20, 24–34, 47–51 | Eda |
 | Project management: documents, repositories, main, PR reviews, final report | — | Ezgi |
 
 All data, people, companies and actions are **synthetic**. Every simulated action is written to the simulator record and, in research mode, shown with the badge “Simulation · synthetic data” (Turkish: “Simülasyon · sentetik veri”).

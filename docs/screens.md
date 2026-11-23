@@ -1,6 +1,6 @@
 # Beemy screens and routes
 
-51 screens: Melike 01–17, Eda 18–34, Berfin 35–51. The Figma frame name, the story title and the route below always match. Figma: [Beemy · Ekranlar v6](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2222-1077).
+51 screens, 17 each: Melike 01–17; Berfin 18, 19, 21–23, 35–46; Eda 20, 24–34, 47–51. The Figma frame name, the story title and the route below always match. Figma: [Beemy · Ekranlar v6](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2222-1077).
 
 | No | Figma frame | Owner | Route | Story | Sprint | Mascot | Screen file |
 |---|---|---|---|---|---|---|---|
@@ -21,12 +21,12 @@
 | 15 | 15 · BM-050 · Notification and automation rules · Melike | Melike | `/profile/rules` | BM-050 | 7 | Thinking, original colour | `src/features/start-profile/screens/NotificationAndAutomationRulesScreen.tsx` |
 | 16 | 16 · BM-041 · Settings and account · Melike | Melike | `/profile/settings` | BM-041 | 6 | Welcome, original colour | `src/features/start-profile/screens/SettingsAndAccountScreen.tsx` |
 | 17 | 17 · BM-064 · Evaluation summary · Melike | Melike | `/research/summary` | BM-064 | 8 | Comparing, mood colour | `src/features/start-profile/screens/EvaluationSummaryScreen.tsx` |
-| 18 | 18 · BM-016 · Voice assistant · Eda | Eda | `/voice` | BM-016 | 3 | Listening, mood colour | `src/features/task-tools/screens/VoiceAssistantScreen.tsx` |
-| 19 | 19 · BM-024 · Type mode · Eda | Eda | `/chat/[chatId]` | BM-024 | 4 | Thinking, mood colour | `src/features/task-tools/screens/TypeModeScreen.tsx` |
+| 18 | 18 · BM-016 · Voice assistant · Berfin | Berfin | `/voice` | BM-016 | 3 | Listening, mood colour | `src/features/assistant/screens/VoiceAssistantScreen.tsx` |
+| 19 | 19 · BM-024 · Type mode · Berfin | Berfin | `/chat/[chatId]` | BM-024 | 4 | Thinking, mood colour | `src/features/assistant/screens/TypeModeScreen.tsx` |
 | 20 | 20 · BM-028 · My tasks · Eda | Eda | `/tasks` | BM-028 | 4 | Welcome, original colour | `src/features/task-tools/screens/MyTasksScreen.tsx` |
-| 21 | 21 · BM-020 · Task summary · Eda | Eda | `/task/[id]/summary` | BM-020 | 3 | Thinking, mood colour | `src/features/task-tools/screens/TaskSummaryScreen.tsx` |
-| 22 | 22 · BM-034 · Live plan · Eda | Eda | `/task/[id]` | BM-034 | 5 | Researching, mood colour | `src/features/task-tools/screens/LivePlanScreen.tsx` |
-| 23 | 23 · BM-035 · Agents · Eda | Eda | `/agents` | BM-035 | 5 | Researching, mood colour | `src/features/task-tools/screens/AgentsScreen.tsx` |
+| 21 | 21 · BM-020 · Task summary · Berfin | Berfin | `/task/[id]/summary` | BM-020 | 3 | Thinking, mood colour | `src/features/assistant/screens/TaskSummaryScreen.tsx` |
+| 22 | 22 · BM-034 · Live plan · Berfin | Berfin | `/task/[id]` | BM-034 | 5 | Researching, mood colour | `src/features/assistant/screens/LivePlanScreen.tsx` |
+| 23 | 23 · BM-035 · Agents · Berfin | Berfin | `/agents` | BM-035 | 5 | Researching, mood colour | `src/features/assistant/screens/AgentsScreen.tsx` |
 | 24 | 24 · BM-043 · Recommendations · Eda | Eda | `/task/[id]/options` | BM-043 | 6 | Comparing, mood colour | `src/features/task-tools/screens/RecommendationsScreen.tsx` |
 | 25 | 25 · BM-044 · Comparison table · Eda | Eda | `/task/[id]/options/compare` | BM-044 | 6 | Comparing, mood colour | `src/features/task-tools/screens/ComparisonTableScreen.tsx` |
 | 26 | 26 · BM-053 · Travel plan · Eda | Eda | `/task/[id]/travel` | BM-053 | 7 | Researching, mood colour | `src/features/task-tools/screens/TravelPlanScreen.tsx` |
@@ -50,11 +50,11 @@
 | 44 | 44 · BM-058 · Task completed · Berfin | Berfin | `/task/[id]/result` | BM-058 | 7 | Done, mood colour | `src/features/authority/screens/TaskCompletedScreen.tsx` |
 | 45 | 45 · BM-070 · Activity log · Berfin | Berfin | `/log` | BM-070 | 8 | Remembering, original colour | `src/features/authority/screens/ActivityLogScreen.tsx` |
 | 46 | 46 · BM-071 · Log entry details · Berfin | Berfin | `/log/[entryId]` | BM-071 | 8 | Approved, mood colour | `src/features/authority/screens/LogEntryDetailsScreen.tsx` |
-| 47 | 47 · BM-078 · Workflow discovery · Berfin | Berfin | `/workflows/discover` | BM-078 | 9 | Remembering, mood colour | `src/features/authority/screens/WorkflowDiscoveryScreen.tsx` |
-| 48 | 48 · BM-079 · Teach by showing · Berfin | Berfin | `/workflows/teach` | BM-079 | 9 | Remembering, mood colour | `src/features/authority/screens/TeachByShowingScreen.tsx` |
-| 49 | 49 · BM-080 · Learned workflows · Berfin | Berfin | `/workflows` | BM-080 | 9 | Remembering, mood colour | `src/features/authority/screens/LearnedWorkflowsScreen.tsx` |
-| 50 | 50 · BM-072 · Permissions and approval rules · Berfin | Berfin | `/profile/permissions` | BM-072 | 8 | Approved, original colour | `src/features/authority/screens/PermissionsAndApprovalRulesScreen.tsx` |
-| 51 | 51 · BM-073 · Run log · Berfin | Berfin | `/research/run/[id]` | BM-073 | 8 | Comparing, mood colour | `src/features/authority/screens/RunLogScreen.tsx` |
+| 47 | 47 · BM-078 · Workflow discovery · Eda | Eda | `/workflows/discover` | BM-078 | 9 | Remembering, mood colour | `src/features/task-tools/screens/WorkflowDiscoveryScreen.tsx` |
+| 48 | 48 · BM-079 · Teach by showing · Eda | Eda | `/workflows/teach` | BM-079 | 9 | Remembering, mood colour | `src/features/task-tools/screens/TeachByShowingScreen.tsx` |
+| 49 | 49 · BM-080 · Learned workflows · Eda | Eda | `/workflows` | BM-080 | 9 | Remembering, mood colour | `src/features/task-tools/screens/LearnedWorkflowsScreen.tsx` |
+| 50 | 50 · BM-072 · Permissions and approval rules · Eda | Eda | `/profile/permissions` | BM-072 | 8 | Approved, original colour | `src/features/task-tools/screens/PermissionsAndApprovalRulesScreen.tsx` |
+| 51 | 51 · BM-073 · Run log · Eda | Eda | `/research/run/[id]` | BM-073 | 8 | Comparing, mood colour | `src/features/task-tools/screens/RunLogScreen.tsx` |
 
 ## Tabs
 
