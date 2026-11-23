@@ -1,14 +1,15 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 30 · Run log (BM-054, Berfin). Figma frame: 30 · BM-054 · Run log · Berfin */
+/** 51 · Run log (BM-073, Berfin). Figma frame: 51 · BM-073 · Run log · Berfin */
 export default function RunLogRoute() {
   return (
     <ComingSoon
-      id="30"
+      id="51"
       name="Run log"
       header
       links={[
-
+        { label: "Compare runs → 34", href: "/research/compare" },
+        { label: "Summary → 17", href: "/research/summary" }
       ]}
     />
   );

@@ -1,16 +1,14 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 09 · Settings (BM-030, Melike). Figma frame: 09 · BM-030 · Settings · Melike */
-export default function SettingsRoute() {
+/** 16 · Settings and account (BM-041, Melike). Figma frame: 16 · BM-041 · Settings and account · Melike */
+export default function SettingsAndAccountRoute() {
   return (
     <ComingSoon
-      id="09"
-      name="Settings"
-      tabBar
+      id="16"
+      name="Settings and account"
       header
       links={[
-        { label: "Dil \u2192 02", href: "/onboarding/language" },
-        { label: "Ara\u015ft\u0131rma modu \u2192 19", href: "/research" }
+
       ]}
     />
   );

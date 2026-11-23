@@ -1,12 +1,11 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 29 · Active permissions (BM-057, Berfin). Figma frame: 29 · BM-057 · Active permissions · Berfin */
-export default function ActivePermissionsRoute() {
+/** 50 · Permissions and approval rules (BM-072, Berfin). Figma frame: 50 · BM-072 · Permissions and approval rules · Berfin */
+export default function PermissionsAndApprovalRulesRoute() {
   return (
     <ComingSoon
-      id="29"
-      name="Active permissions"
-      tabBar
+      id="50"
+      name="Permissions and approval rules"
       header
       links={[
 

@@ -3,7 +3,7 @@ import { rootScreenOptions, subScreenOptions } from '@/navigation/stackOptions';
 
 export const unstable_settings = { initialRouteName: 'index' };
 
-/** BM-006: Yeni tab. 11 New task. */
+/** BM-006: Tasks tab. 20 My tasks. */
 export default function Layout() {
   return (
     <Stack screenOptions={subScreenOptions}>

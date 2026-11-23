@@ -1,14 +1,13 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 23 · Targeted question (BM-019, Berfin). Figma frame: 23 · BM-019 · Targeted question · Berfin */
-export default function TargetedQuestionRoute() {
+/** 39 · Voice question (BM-022, Berfin). Figma frame: 39 · BM-022 · Voice question · Berfin */
+export default function VoiceQuestionRoute() {
   return (
     <ComingSoon
-      id="23"
-      name="Targeted question"
-      header
+      id="39"
+      name="Voice question"
       links={[
-        { label: "Yan\u0131tla ve devam et \u2192 14", href: "/task/demo" }
+        { label: "Window → 22", href: "/task/demo" }
       ]}
     />
   );

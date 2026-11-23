@@ -1,17 +1,18 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 14 · Plan and progress (BM-027, Eda). Figma frame: 14 · BM-027 · Plan and progress · Eda */
-export default function PlanAndProgressRoute() {
+/** 22 · Live plan (BM-034, Eda). Figma frame: 22 · BM-034 · Live plan · Eda */
+export default function LivePlanRoute() {
   return (
     <ComingSoon
-      id="14"
-      name="Plan and progress"
+      id="22"
+      name="Live plan"
       header
       links={[
-        { label: "Se\u00e7enekler \u2192 15", href: "/task/demo/options" },
-        { label: "Belge \u2192 17", href: "/task/demo/document" },
-        { label: "Yaz\u0131\u015fma \u2192 18", href: "/task/demo/messages" },
-        { label: "Onay (Ko\u015ful A) \u2192 22", href: "/task/demo/approve" }
+        { label: "Agents → 23", href: "/agents" },
+        { label: "Options → 24", href: "/task/demo/options" },
+        { label: "Approval → 36", href: "/task/demo/approve" },
+        { label: "Stop → 40", href: "/task/demo/stop" },
+        { label: "Plan changed → 41", href: "/task/demo/replan" }
       ]}
     />
   );

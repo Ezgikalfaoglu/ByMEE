@@ -13,8 +13,9 @@ const icon =
   );
 
 /**
- * BM-006: four tabs (Figma component "Sekme çubuğu"). Labels are "Must keep" texts.
- * Görevler → 03 My tasks, Yeni → 11 New task, Kayıtlar → 27 Audit log, Profil → 05 Profile.
+ * BM-006: four tabs (Figma component "Sekme çubuğu"): Home → 09, Tasks → 20, Log → 45, Profile → 11.
+ * Labels come from en.json / tr.json once the text files are in. Voice is not a tab:
+ * the mic on Home (09) and the "+" on My tasks (20) open 18 Voice assistant.
  * Each tab folder has its own Stack, so tapping the active tab again returns to its first screen.
  */
 export default function TabsLayout() {
@@ -22,16 +23,16 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.primary,
+        tabBarActiveTintColor: colors.nightSoft,
         tabBarInactiveTintColor: colors.muted,
         tabBarStyle: { backgroundColor: colors.surface, borderTopColor: colors.line },
         tabBarLabelStyle: { fontFamily: fonts.medium, fontSize: 11 },
       }}
     >
-      <Tabs.Screen name="home" options={{ title: 'Görevler', tabBarIcon: icon('list-outline') }} />
-      <Tabs.Screen name="new" options={{ title: 'Yeni', tabBarIcon: icon('add-circle-outline') }} />
-      <Tabs.Screen name="log" options={{ title: 'Kayıtlar', tabBarIcon: icon('document-text-outline') }} />
-      <Tabs.Screen name="profile" options={{ title: 'Profil', tabBarIcon: icon('person-outline') }} />
+      <Tabs.Screen name="home" options={{ title: 'Home', tabBarIcon: icon('home-outline') }} />
+      <Tabs.Screen name="tasks" options={{ title: 'Tasks', tabBarIcon: icon('list-outline') }} />
+      <Tabs.Screen name="log" options={{ title: 'Log', tabBarIcon: icon('document-text-outline') }} />
+      <Tabs.Screen name="profile" options={{ title: 'Profile', tabBarIcon: icon('person-outline') }} />
     </Tabs>
   );
 }

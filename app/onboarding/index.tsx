@@ -7,7 +7,8 @@ export default function WelcomeRoute() {
       id="01"
       name="Welcome"
       links={[
-        { label: "Ba\u015flayal\u0131m \u2192 02", href: "/onboarding/language" }
+        { label: "Get started → 02", href: "/onboarding/language" },
+        { label: "I already have an account → 05", href: "/auth/log-in" }
       ]}
     />
   );

@@ -1,14 +1,14 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 20 · Run setup (BM-051, Eda). Figma frame: 20 · BM-051 · Run setup · Eda */
+/** 33 · Run setup (BM-069, Eda). Figma frame: 33 · BM-069 · Run setup · Eda */
 export default function RunSetupRoute() {
   return (
     <ComingSoon
-      id="20"
+      id="33"
       name="Run setup"
       header
       links={[
-        { label: "Ko\u015fuyu ba\u015flat \u2192 30", href: "/research/run/demo-run" }
+        { label: "Start run → 51", href: "/research/run/demo" }
       ]}
     />
   );

@@ -1,16 +1,16 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 03 · My tasks (BM-014, Melike). Figma frame: 03 · BM-014 · My tasks · Melike */
-export default function MyTasksRoute() {
+/** 09 · Home (BM-031, Melike). Figma frame: 09 · BM-031 · Home · Melike */
+export default function HomeRoute() {
   return (
     <ComingSoon
-      id="03"
-      name="My tasks"
+      id="09"
+      name="Home"
       tabBar
       links={[
-        { label: "Zil \u2192 04", href: "/home/notifications" },
-        { label: "G\u00f6rev kart\u0131 \u2192 14", href: "/task/demo" },
-        { label: "Yeni g\u00f6rev \u2192 11", href: "/new" }
+        { label: "Mic → 18", href: "/voice" },
+        { label: "Next step → 36", href: "/task/demo/approve" },
+        { label: "For you → 10", href: "/home/for-you" }
       ]}
     />
   );

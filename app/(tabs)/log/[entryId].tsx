@@ -1,12 +1,11 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 28 · Log entry details (BM-053, Berfin). Figma frame: 28 · BM-053 · Log entry details · Berfin */
+/** 46 · Log entry details (BM-071, Berfin). Figma frame: 46 · BM-071 · Log entry details · Berfin */
 export default function LogEntryDetailsRoute() {
   return (
     <ComingSoon
-      id="28"
+      id="46"
       name="Log entry details"
-      tabBar
       header
       links={[
 

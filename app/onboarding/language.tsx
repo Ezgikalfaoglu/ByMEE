@@ -8,7 +8,7 @@ export default function LanguageRoute() {
       name="Language"
       header
       links={[
-        { label: "Devam et \u2192 03", href: "/home", mode: "replace" }
+        { label: "Continue → 03", href: "/auth/sign-up" }
       ]}
     />
   );

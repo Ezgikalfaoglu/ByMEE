@@ -3,7 +3,7 @@ import type { Edge } from 'react-native-safe-area-context';
 import { AppText, Button, Screen } from '@/components';
 
 export type ComingSoonLink = {
-  /** Development-only shortcut, e.g. "Başlayalım → 02". */
+  /** Development-only shortcut, e.g. "Get started → 02". */
   label: string;
   /** Plain string on purpose: these are temporary dev links, not checked against typed routes. */
   href: string;
@@ -46,7 +46,7 @@ export function ComingSoon({ id, name, header = false, tabBar = false, links = [
       <AppText muted>
         {id} · {name}
       </AppText>
-      <AppText variant="title">Yakında</AppText>
+      <AppText variant="title">Coming soon</AppText>
       {__DEV__
         ? links.map((link) => (
             <Button key={link.label} label={link.label} variant="secondary" onPress={() => go(link)} />
