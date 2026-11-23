@@ -2,7 +2,7 @@
 
 Branch: `Berfin-Ozcelik` · Klasör: `src/features/authority/` · Ekranlar: 35–51 (17 ekran)
 
-Story metinleri ve kabul kriterleri: [Beemy User Stories](https://docs.google.com/document/d/1XFCXvD4Xdgg8F5-E7xZxtN1Ssb3-WIasOo5_zK9tRPE/edit) (bölüm 5, her story'de **Must have** ve **Nice to have**). İlerleme: [Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit). Tasarım: [Figma · Beemy · Ekranlar v6](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2222-1077). Rota listesi: [`docs/screens.md`](../../../docs/screens.md).
+Story metinleri ve kabul kriterleri: [Beemy User Stories](https://docs.google.com/document/d/1Xb_IfONw5j9WiAaj7AdW68IzL1zRA8XK0xzPr3ZsLLw/edit) (bölüm 5, her story'de **Must have** ve **Nice to have**). İlerleme: [Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit). Tasarım: [Figma · Beemy · Ekranlar v6](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2222-1077). Rota listesi: [`docs/screens.md`](../../../docs/screens.md).
 
 Ekran dosyasının adı, Figma frame adı (`NN · BM-xxx · Ekran · Sahibi`) ve story başlığı aynıdır. PR başlığı: `feat(BM-xxx): <story başlığı>`.
 
