@@ -30,7 +30,7 @@ Uygulama varsayılan olarak İngilizce, Türkçe tam destekli. Ekrandaki metinle
 | 48 | 48 · BM-079 · Teach by showing · Eda | `/workflows/teach` | 9 | Remembering, mood colour | `task-tools/screens/TeachByShowingScreen.tsx` |
 | 49 | 49 · BM-080 · Learned workflows · Eda | `/workflows` | 9 | Remembering, mood colour | `task-tools/screens/LearnedWorkflowsScreen.tsx` |
 
-> **23 Kasım 2026 sahiplik güncellemesi:** 18 Voice assistant, 19 Type mode, 21 Task summary, 22 Live plan, 23 Agents ve BM-015 Voice input Berfin'e geçti. Sana 47 Workflow discovery, 48 Teach by showing, 49 Learned workflows, 50 Permissions and approval rules, 51 Run log ve BM-046 Condition A and B switch geldi. Navigation shell (BM-006) sende kalıyor; rotalar değişmedi. Ekran numaraları, story ID'leri ve sprintler aynı.
+> **23 Kasım 2026 sahiplik güncellemesi:** 18 Voice assistant, 19 Type mode, 21 Task summary, 22 Live plan, 23 Agents ve BM-015 Voice input Berfin'e geçti. Sana 47 Workflow discovery, 48 Teach by showing, 49 Learned workflows, 50 Permissions and approval rules, 51 Run log ve BM-046 Condition A and B switch geldi. Navigation shell (BM-006) sende kalıyor; rotalar değişmedi. Ekran numaraları, story ID'leri ve sprintler aynı. Sprint 8 ve 9'da ekranların yoğunlaştığı için Berfin sana ekran testleri ve PR incelemesiyle destek veriyor (27–34 ve 47–51).
 
 ## Ekran başına olmazsa olmazlar (özet)
 
