@@ -5,7 +5,7 @@ import { AppText } from './AppText';
 export type ButtonVariant = 'primary' | 'secondary' | 'text' | 'danger';
 
 export type ButtonProps = {
-  /** Exact button text from the story ("Must keep"). */
+  /** Exact button text from the story ("Must have"). */
   label: string;
   onPress: () => void;
   variant?: ButtonVariant;
