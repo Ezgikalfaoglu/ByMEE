@@ -1,6 +1,6 @@
 /**
  * Beemy colours. Same tokens as the Figma variable collection "Beemy renkler"
- * (page "Beemy — Görev Devri ekranları (v3)").
+ * (page "Beemy · Ekranlar v6").
  *
  * - primary: Beemy and main actions
  * - warn / amber: Beemy is waiting for the user (approval, question)
@@ -8,6 +8,9 @@
  * - danger: blocked, errors
  * - info: information
  * Each colour has a soft version for backgrounds.
+ *
+ * v6 colour blocks: nightSoft (indigo panels), blue, mint and cream panels,
+ * violet for the mic. On dark panels use textSoft for secondary text.
  */
 export const colors = {
   bg: '#F6F5FB',
@@ -31,6 +34,16 @@ export const colors = {
   infoSoft: '#E6F0FD',
 
   disabled: '#B8B5C8',
+
+  // v6 colour blocks and accents
+  night: '#15123F',
+  nightSoft: '#2A2470',
+  violet: '#7C5CFA',
+  blue: '#3D7BFA',
+  mint: '#4FD8B0',
+  cream: '#FFF1DB',
+  sun: '#FFB547',
+  textSoft: '#B4AEE6',
 } as const;
 
 export type ColorName = keyof typeof colors;

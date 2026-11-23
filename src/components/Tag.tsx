@@ -5,7 +5,7 @@ import { AppText } from './AppText';
 export type TagTone = 'neutral' | 'info' | 'waiting' | 'question' | 'success' | 'danger';
 
 export type TagProps = {
-  /** e.g. "Simülasyon · sentetik veri", "Seni bekliyor", "Tamamlandı". */
+  /** e.g. "Simulation · synthetic data", "Needs you", "Done". */
   label: string;
   tone?: TagTone;
 };
