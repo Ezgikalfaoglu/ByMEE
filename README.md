@@ -1,8 +1,8 @@
 # Beemy: Ekip Kurulum ve Entegrasyon Rehberi
 
-**Tek repo, tek lockfile, tek tasarım sistemi, 30 mobil ekran.** Beemy, TÜBİTAK 2209-A önerisi “Kişisel Yapay Zekâ Asistanlarında Görev Devri ve Yetki Denetimi”nin prototipidir.
+**Tek repo, tek lockfile, tek tasarım sistemi, 51 mobil ekran.** Beemy, TÜBİTAK 2209-A önerisi “Kişisel Yapay Zekâ Asistanlarında Görev Devri ve Yetki Denetimi”nin prototipidir.
 
-User story'ler: [Beemy User Stories](https://docs.google.com/document/d/1fudNVUfQvUdLdeaM4BntRtCpyhUhFH0DhF2yhvB9TTI/edit) · İlerleme: [Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit) · Ekranlar: [Figma](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2188-2324) · Özet: [`docs/requirements.md`](docs/requirements.md), [`docs/user-stories.md`](docs/user-stories.md), [`docs/screens.md`](docs/screens.md)
+User story'ler: [Beemy User Stories](https://docs.google.com/document/d/1XFCXvD4Xdgg8F5-E7xZxtN1Ssb3-WIasOo5_zK9tRPE/edit) · İlerleme: [Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit) · Ekranlar: [Figma · Beemy · Ekranlar v6](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2222-1077) · Özet: [`docs/requirements.md`](docs/requirements.md), [`docs/user-stories.md`](docs/user-stories.md), [`docs/screens.md`](docs/screens.md)
 
 ## Ortak teknoloji ve sürüm sözleşmesi (üç kişi için zorunlu)
 
@@ -16,7 +16,8 @@ User story'ler: [Beemy User Stories](https://docs.google.com/document/d/1fudNVUf
 | Paket yöneticisi | **npm** (yarn/pnpm/bun kullanma) |
 | Expo SDK / React / React Native | **Expo SDK 58**, React 19.3, React Native 0.88. `package-lock.json` ile kilitli |
 | Test | Jest (`jest-expo`) + React Native Testing Library |
-| UI tasarımı | Figma sayfası “Beemy — Görev Devri ekranları (v3)”, “Beemy renkler” değişkenleri |
+| UI tasarımı | Figma sayfası “Beemy · Ekranlar v6 (EN + TR, maskot, ses ve görev odaklı)”, “Beemy renkler” değişkenleri |
+| Dil | Uygulama varsayılan olarak İngilizce, Türkçe tam destekli (`src/i18n/en.json`, `tr.json`) |
 
 **Önemli:** Node ve npm sürümleri sabittir. Expo SDK, React ve React Native sürümlerini PM seçti ve `package-lock.json` ile kilitledi. `npx expo install --check` ile doğrula. Kimse kendi başına `expo@latest`, `react-native@latest`, `npm update`, `npm audit fix --force` veya `npx create-expo-app` çalıştırmamalı. PM'nin onayladığı yükseltme tek PR'da yapılır.
 
@@ -75,9 +76,9 @@ src/components/         ortak componentler (Ezgi)
 src/types/              ortak tipler (BM-004 görev tanımı, Eda)
 src/services/           mock temeli (BM-003, Berfin)
 src/utils/              formatMoney() gibi yardımcılar (BM-003, Berfin)
-src/features/start-profile/   Melike, ekran 01-10
-src/features/task-tools/      Eda, ekran 11-20
-src/features/authority/       Berfin, ekran 21-30
+src/features/start-profile/   Melike, ekran 01-17 (hesap, ana sayfa, kişiselleştirme)
+src/features/task-tools/      Eda, ekran 18-34 (ses, görev yürütme, araştırma, iletişim)
+src/features/authority/       Berfin, ekran 35-51 (yetki, onay, tamamlama, otomasyon, kayıt)
 docs/                   gereksinimler, user story dizini, ekran listesi (Ezgi)
 ```
 
@@ -88,20 +89,22 @@ Import'larda `@/` kısayolu `src/` klasörünü gösterir: `import { Button } fr
 ### Ortak tasarım sistemi
 
 - Renkler Figma'daki “Beemy renkler” koleksiyonuyla aynı (`src/theme/colors.ts`): `primary #4B3FD6`, `ink #1B1530`, `bg #F6F5FB`, `success #1E9E63`, `warn #E07A12`, `amber #B98204`, `danger #D23C68`, `info #2F7FE0` ve her birinin soft hali.
+- v6 renk blokları: üst paneller `nightSoft #2A2470` (indigo), `blue #3D7BFA`, `mint #4FD8B0`, `cream #FFF1DB`; vurgu `violet #7C5CFA` (mikrofon). Kartlar çerçevesiz, butonlar düz indigo, gradyan yok.
+- Maskot: ana ekranlarda (onboarding, hesap, Home, Tasks, Log, Profile) orijinal mor-mavi renginde; görev ve durum ekranlarında duygu renginde (`<Mascot mood="…" tinted />`, BM-010).
 - Anlamları: primary Beemy ve ana aksiyonlar, **warn ve amber kullanıcıyı bekleyen işler** (onay, soru), success tamamlandı, danger engellendi veya hata, info bilgi.
 - Font: **Plus Jakarta Sans** (`@expo-google-fonts/plus-jakarta-sans`, `app/_layout.tsx` içinde yükleniyor).
 - 390 × 844 referans mobil frame, 24 px yatay boşluk, 8 px spacing, 18 px kart radius. Gövde yazısı en az 14 pt, dokunma alanı en az 44 × 44.
 - `src/components/` içindeki ortak parçaları kullan: `Screen`, `ScreenHeader`, `AppText`, `Button`, `Card`, `Chip`, `Tag`, `TextField`, `ListRow`, `StateView`, `useToast`, `confirm`. İkonlar için `@expo/vector-icons` (outline).
-- Simüle edilen her işlemde “Simülasyon · sentetik veri” rozeti görünür.
+- Araştırma modunda simüle edilen her işlemde “Simulation · synthetic data” rozeti görünür (Türkçe: “Simülasyon · sentetik veri”).
 - Her ekran Figma'daki aynı numaralı frame ile eşleşir: `NN · BM-xxx · Ekran adı · Sahibi`.
 
 ## Ekip
 
 | Kişi | Sistem | Branch | Ekranlar |
 |---|---|---|---|
-| Melike Şahin | macOS | `Melike-Sahin` | 01–10 |
-| Türkan Eda Uluçay | Windows | `Eda-Uluçay` | 11–20 |
-| Ayşe Berfin Özçelik | macOS | `Berfin-Ozcelik` | 21–30 |
+| Melike Şahin | macOS | `Melike-Sahin` | 01–17 |
+| Türkan Eda Uluçay | Windows | `Eda-Uluçay` | 18–34 |
+| Ayşe Berfin Özçelik | macOS | `Berfin-Ozcelik` | 35–51 |
 | Ezginur Kalfaoğlu (Proje yöneticisi) | Kendi sistemi | `main` | Ekran yok: repolar, main, dokümanlar, PR inceleme, final rapor |
 
 ## Proje kurulumu (PM)
@@ -115,7 +118,7 @@ Import'larda `@/` kısayolu `src/` klasörünü gösterir: `import { Button } fr
 - [ ] GitHub'da `main` için branch protection ve zorunlu PR incelemesi
 - [ ] Expo Go'yu ekip telefonlarında dene (SDK 58)
 
-Navigasyon (dört sekme, ilk açılış kontrolü, 30 rota) BM-006 ile Eda'da. `app/_layout.tsx` ve `app/index.tsx` şu an sadece projenin çalışması için geçici halde.
+Navigasyon (dört sekme: Home, Tasks, Log, Profile; ilk açılış kontrolü; 51 rota) BM-006 ile Eda'da. `app/_layout.tsx` ve `app/index.tsx` şu an sadece projenin çalışması için geçici halde.
 
 ## Herkesin izleyeceği kurallar
 
@@ -125,7 +128,7 @@ Navigasyon (dört sekme, ilk açılış kontrolü, 30 rota) BM-006 ile Eda'da. `
 - Mac'te iOS Simulator isteğe bağlı; Windows'ta Android emulator veya fiziksel telefon kullan.
 - Geliştiriciler kendi branch'lerinde ve kendi feature klasörlerinde çalışır. Ortak dosyalar (`app/_layout.tsx`, `src/theme/`, `src/components/`, `src/types/`, `src/services/`, `src/utils/`) yalnızca Ezgi'nin onayladığı PR ile değişir. Hangi ortak dosyayı kimin yazdığı yukarıdaki klasör yapısında.
 - `main`'e doğrudan push yok. Her iş PR ile gelir, Ezgi inceler ve birleştirir.
-- PR başlığında story ID ve hikâye adı olsun: `feat(BM-012): New task`. PR şablonundaki listeyi doldur.
+- PR başlığında story ID ve hikâye adı olsun: `feat(BM-031): Home`. PR şablonundaki listeyi doldur.
 - Her PR için ekran görüntüsü, çalıştırma adımları ve QA kanıtı ekle.
 - `main` güncellenince kendi branch'ine al: `git pull origin main`.
 

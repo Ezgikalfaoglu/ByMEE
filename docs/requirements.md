@@ -1,8 +1,8 @@
 # Beemy requirements
 
-Owner: Ezgi (PM) · Story: BM-001 · Last update: 20 Nov 2026
+Owner: Ezgi (PM) · Story: BM-001 · Last update: 23 Nov 2026 (v6)
 
-The backlog and the detailed stories are in the [Beemy User Stories](https://docs.google.com/document/d/1fudNVUfQvUdLdeaM4BntRtCpyhUhFH0DhF2yhvB9TTI/edit) doc. Progress is in the [Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit). Screens are on the Figma page [Beemy — Görev Devri ekranları (v3)](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2188-2324). This file gives the big picture.
+The backlog and the detailed stories are in the [Beemy User Stories](https://docs.google.com/document/d/1XFCXvD4Xdgg8F5-E7xZxtN1Ssb3-WIasOo5_zK9tRPE/edit) doc. Progress is in the [Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit). Screens are on the Figma page [Beemy · Ekranlar v6](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2222-1077). This file gives the big picture.
 
 ## 1. Vision
 
@@ -22,18 +22,18 @@ The project is the prototype of the TÜBİTAK 2209-A proposal “Kişisel Yapay 
 ## 3. Users
 
 - Sample persona: **Elif Yılmaz**, Çankaya, Ankara (synthetic). Prices are in TL.
-- The app works in Turkish and English. Documents and messages can use a different language from the app.
+- The app is in English by default and fully supports Turkish (switch on screen 02 and in Settings). Voice works in both languages, also mixed. Documents and messages can use a different language from the app.
 
 ## 4. Scope
 
 | Area | Screens | Owner |
 |---|---|---|
-| Start, profile and home: welcome, language, my tasks, notifications, profile, verified facts, documents, preferences, settings, evaluation summary | 01–10 | Melike |
-| Task, plan and tools: new task, task summary, edit task, plan and progress, options, option details, document draft, messages, scenario library, run setup | 11–20 | Eda |
-| Authority, approval and records: authority setup, approval before action, targeted question, no valid option, new limit, result, audit log, log entry details, active permissions, run log | 21–30 | Berfin |
+| Account, home and personalisation: welcome, language, sign up, verify code, log in, forgot password, permissions and data sources, voice introduction, home, for you, profile, what I learned, decision twin, connected sources, rules, settings, evaluation summary | 01–17 | Melike |
+| Voice, task flow, research and messages: voice assistant, type mode, my tasks, task summary, live plan, agents, recommendations, comparison table, travel plan, price tracking, offers, inbox summary, reply draft, message search, scenario library, run setup, A/B comparison | 18–34 | Eda |
+| Authority, approval, completion, automation and records: authority setup, approval before action, payment approval, data sharing approval, voice question, emergency stop, plan changed, no valid option, new limit, task completed, activity log, log entry details, workflow discovery, teach by showing, learned workflows, permissions and approval rules, run log | 35–51 | Berfin |
 | Project management: documents, repositories, main, PR reviews, final report | — | Ezgi |
 
-All data, people, companies and actions are **synthetic**. Every simulated action is written to the simulator record and shown with the badge “Simülasyon · sentetik veri”.
+All data, people, companies and actions are **synthetic**. Every simulated action is written to the simulator record and, in research mode, shown with the badge “Simulation · synthetic data” (Turkish: “Simülasyon · sentetik veri”).
 
 Out of scope: real payments, real e-mail or phone calls, real personal accounts, human participants.
 
@@ -45,7 +45,8 @@ Out of scope: real payments, real e-mail or phone calls, real personal accounts,
 4. **Honest results.** Success is shown only after the simulator record is verified.
 5. **One question.** When required information is missing, Beemy asks one targeted question and does nothing until it is answered.
 6. **States.** Every screen has loading, empty and error states.
-7. **Fixed texts.** Texts in the “Must keep” lists are used exactly as written.
+7. **Fixed texts.** Quoted texts in the “Must have” lists are used exactly as written (English in en.json, the same key in tr.json).
+8. **Mascot.** Main screens show the mascot in its original purple-blue colour; task and status screens show the mood colour.
 
 ## 6. Non-functional requirements
 
@@ -76,7 +77,7 @@ Sprint 4 (28 Dec to 8 Jan) is a light sprint (New Year).
 ## 9. Definition of Done
 
 - Merged to `main` through a pull request reviewed by Ezgi.
-- Every “Must keep” line checked.
+- Every “Must have” line checked. “Nice to have” lines are optional.
 - Unit tests for logic files.
 - Works on iOS and Android, both languages checked.
 - The screen matches its Figma frame.
