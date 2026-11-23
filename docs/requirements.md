@@ -2,7 +2,7 @@
 
 Owner: Ezgi (PM) · Story: BM-001 · Last update: 23 Nov 2026 (v6)
 
-The backlog and the detailed stories are in the [Beemy User Stories](https://docs.google.com/document/d/1Xb_IfONw5j9WiAaj7AdW68IzL1zRA8XK0xzPr3ZsLLw/edit) doc. Progress is in the [Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit). Screens are on the Figma page [Beemy · Ekranlar v6](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2222-1077). This file gives the big picture.
+The backlog and the detailed stories are in the [Beemy User Stories](https://docs.google.com/document/d/19EbWZJk7rDjSQbAETuhW1OGU2buwmElGMRwyxlVzG04/edit) doc. Progress is in the [Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit). Screens are on the Figma page [Beemy · Ekranlar v6](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2222-1077). This file gives the big picture.
 
 ## 1. Vision
 
