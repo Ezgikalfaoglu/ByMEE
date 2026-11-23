@@ -1,6 +1,6 @@
 # Beemy user stories
 
-The full stories are in the **[Beemy User Stories](https://docs.google.com/document/d/1XFCXvD4Xdgg8F5-E7xZxtN1Ssb3-WIasOo5_zK9tRPE/edit)** Google Doc. Every story has **Must have (olmazsa olmaz)** and **Nice to have (eklenebilir)** acceptance criteria. Progress is in the **[Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit)**. Screens are on the Figma page **[Beemy · Ekranlar v6](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2222-1077)**.
+The full stories are in the **[Beemy User Stories](https://docs.google.com/document/d/1Xb_IfONw5j9WiAaj7AdW68IzL1zRA8XK0xzPr3ZsLLw/edit)** Google Doc. Every story has **Must have (olmazsa olmaz)** and **Nice to have (eklenebilir)** acceptance criteria. Progress is in the **[Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit)**. Screens are on the Figma page **[Beemy · Ekranlar v6](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2222-1077)**.
 This file is only an index. Story ID, title, owner, sprint, screen number, Figma frame and route are the same in all four places. If something here is different, the Sprint Tracker is right.
 
 Use the story ID in every pull request title, for example `feat(BM-031): Home`.
