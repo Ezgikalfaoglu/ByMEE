@@ -12,23 +12,25 @@ Uygulama varsayılan olarak İngilizce, Türkçe tam destekli. Ekrandaki metinle
 
 | No | Figma frame | Rota | Sprint | Maskot | Dosya |
 |---|---|---|---|---|---|
-| 01 | 01 · BM-007 · Welcome · Melike | `/onboarding` | 1 | Welcome, original colour | `screens/WelcomeScreen.tsx` |
-| 02 | 02 · BM-008 · Language · Melike | `/onboarding/language` | 2 | Welcome, original colour | `screens/LanguageScreen.tsx` |
-| 03 | 03 · BM-009 · Sign up · Melike | `/auth/sign-up` | 2 | Welcome, original colour | `screens/SignUpScreen.tsx` |
-| 04 | 04 · BM-017 · Verify code · Melike | `/auth/verify` | 3 | Asking, original colour | `screens/VerifyCodeScreen.tsx` |
-| 05 | 05 · BM-018 · Log in · Melike | `/auth/log-in` | 3 | Welcome, original colour | `screens/LogInScreen.tsx` |
-| 06 | 06 · BM-019 · Forgot password · Melike | `/auth/forgot-password` | 3 | Thinking, original colour | `screens/ForgotPasswordScreen.tsx` |
-| 07 | 07 · BM-025 · Permissions and data sources · Melike | `/onboarding/permissions` | 4 | Welcome, original colour | `screens/PermissionsAndDataSourcesScreen.tsx` |
-| 08 | 08 · BM-026 · Voice introduction · Melike | `/onboarding/about-you` | 4 | Listening, original colour | `screens/VoiceIntroductionScreen.tsx` |
-| 09 | 09 · BM-031 · Home · Melike | `/home` | 5 | Welcome, original colour | `screens/HomeScreen.tsx` |
-| 11 | 11 · BM-032 · Profile · Melike | `/profile` | 5 | Welcome, original colour | `screens/ProfileScreen.tsx` |
-| 12 | 12 · BM-039 · What I learned · Melike | `/profile/learned` | 6 | Remembering, original colour | `screens/WhatILearnedScreen.tsx` |
-| 14 | 14 · BM-040 · Connected sources · Melike | `/profile/sources` | 6 | Researching, original colour | `screens/ConnectedSourcesScreen.tsx` |
-| 16 | 16 · BM-041 · Settings and account · Melike | `/profile/settings` | 6 | Welcome, original colour | `screens/SettingsAndAccountScreen.tsx` |
-| 10 | 10 · BM-049 · For you · Melike | `/home/for-you` | 7 | Researching, original colour | `screens/ForYouScreen.tsx` |
-| 13 | 13 · BM-051 · Decision twin · Melike | `/profile/decision-twin` | 7 | Comparing, original colour | `screens/DecisionTwinScreen.tsx` |
-| 15 | 15 · BM-050 · Notification and automation rules · Melike | `/profile/rules` | 7 | Thinking, original colour | `screens/NotificationAndAutomationRulesScreen.tsx` |
-| 17 | 17 · BM-064 · Evaluation summary · Melike | `/research/summary` | 8 | Comparing, mood colour | `screens/EvaluationSummaryScreen.tsx` |
+| 01 | 01 · BM-007 · Welcome · Melike | `/onboarding` | 1 | Welcome, original colour | `start-profile/screens/WelcomeScreen.tsx` |
+| 02 | 02 · BM-008 · Language · Melike | `/onboarding/language` | 2 | Welcome, original colour | `start-profile/screens/LanguageScreen.tsx` |
+| 03 | 03 · BM-009 · Sign up · Melike | `/auth/sign-up` | 2 | Welcome, original colour | `start-profile/screens/SignUpScreen.tsx` |
+| 04 | 04 · BM-017 · Verify code · Melike | `/auth/verify` | 3 | Asking, original colour | `start-profile/screens/VerifyCodeScreen.tsx` |
+| 05 | 05 · BM-018 · Log in · Melike | `/auth/log-in` | 3 | Welcome, original colour | `start-profile/screens/LogInScreen.tsx` |
+| 06 | 06 · BM-019 · Forgot password · Melike | `/auth/forgot-password` | 3 | Thinking, original colour | `start-profile/screens/ForgotPasswordScreen.tsx` |
+| 07 | 07 · BM-025 · Permissions and data sources · Melike | `/onboarding/permissions` | 4 | Welcome, original colour | `start-profile/screens/PermissionsAndDataSourcesScreen.tsx` |
+| 08 | 08 · BM-026 · Voice introduction · Melike | `/onboarding/about-you` | 4 | Listening, original colour | `start-profile/screens/VoiceIntroductionScreen.tsx` |
+| 09 | 09 · BM-031 · Home · Melike | `/home` | 5 | Welcome, original colour | `start-profile/screens/HomeScreen.tsx` |
+| 11 | 11 · BM-032 · Profile · Melike | `/profile` | 5 | Welcome, original colour | `start-profile/screens/ProfileScreen.tsx` |
+| 12 | 12 · BM-039 · What I learned · Melike | `/profile/learned` | 6 | Remembering, original colour | `start-profile/screens/WhatILearnedScreen.tsx` |
+| 14 | 14 · BM-040 · Connected sources · Melike | `/profile/sources` | 6 | Researching, original colour | `start-profile/screens/ConnectedSourcesScreen.tsx` |
+| 16 | 16 · BM-041 · Settings and account · Melike | `/profile/settings` | 6 | Welcome, original colour | `start-profile/screens/SettingsAndAccountScreen.tsx` |
+| 10 | 10 · BM-049 · For you · Melike | `/home/for-you` | 7 | Researching, original colour | `start-profile/screens/ForYouScreen.tsx` |
+| 13 | 13 · BM-051 · Decision twin · Melike | `/profile/decision-twin` | 7 | Comparing, original colour | `start-profile/screens/DecisionTwinScreen.tsx` |
+| 15 | 15 · BM-050 · Notification and automation rules · Melike | `/profile/rules` | 7 | Thinking, original colour | `start-profile/screens/NotificationAndAutomationRulesScreen.tsx` |
+| 17 | 17 · BM-064 · Evaluation summary · Melike | `/research/summary` | 8 | Comparing, mood colour | `start-profile/screens/EvaluationSummaryScreen.tsx` |
+
+> **23 Kasım 2026 sahiplik güncellemesi:** Senin ekranların değişmedi (01–17). Berfin ve Eda arasında 10 ekran yer değiştirdi; ekran numaraları, story ID'leri ve sprintler aynı.
 
 ## Ekran başına olmazsa olmazlar (özet)
 
