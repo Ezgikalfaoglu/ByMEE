@@ -30,7 +30,7 @@ Uygulama varsayılan olarak İngilizce, Türkçe tam destekli. Ekrandaki metinle
 | 45 | 45 · BM-070 · Activity log · Berfin | `/log` | 8 | Remembering, original colour | `authority/screens/ActivityLogScreen.tsx` |
 | 46 | 46 · BM-071 · Log entry details · Berfin | `/log/[entryId]` | 8 | Approved, mood colour | `authority/screens/LogEntryDetailsScreen.tsx` |
 
-> **23 Kasım 2026 sahiplik güncellemesi:** Sesli asistan ve görev konuşma akışı sana geçti: 18 Voice assistant, 19 Type mode, 21 Task summary, 22 Live plan, 23 Agents ve ses katmanı BM-015 Voice input. 47–51 ve BM-046 Condition A and B switch Eda'ya geçti. Ekran numaraları, story ID'leri ve sprintler aynı.
+> **23 Kasım 2026 sahiplik güncellemesi:** Sesli asistan ve görev konuşma akışı sana geçti: 18 Voice assistant, 19 Type mode, 21 Task summary, 22 Live plan, 23 Agents ve ses katmanı BM-015 Voice input. 47–51 ve BM-046 Condition A and B switch Eda'ya geçti. Ekran numaraları, story ID'leri ve sprintler aynı. Sprint 8 ve 9'da senin ekran işin bitmiş oluyor; bu iki sprintte Eda'ya ekran testleri ve PR incelemesiyle destek veriyorsun (27–34 ve 47–51).
 
 > **35 Authority setup için not:** v3 sürümü bu branch'te hazır (`screens/AuthorityScreen.tsx`, testleriyle). Story ID değişmedi: **BM-013**. v6 tasarımına göre güncellemen yeterli: indigo panel ve maskot (Thinking, duygu rengi), büyük “₺5.000” limit kartı ve kaydırıcı, üç anahtar, “Valid for: This task / 7 days / Always” seçimi ve “Save permissions”. `lib/format.ts` ve `types.ts` aynen kullanılabilir.
 
