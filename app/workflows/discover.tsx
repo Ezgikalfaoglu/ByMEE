@@ -1,6 +1,6 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 47 · Workflow discovery (BM-078, Berfin). Figma frame: 47 · BM-078 · Workflow discovery · Berfin */
+/** 47 · Workflow discovery (BM-078, Eda). Figma frame: 47 · BM-078 · Workflow discovery · Eda */
 export default function WorkflowDiscoveryRoute() {
   return (
     <ComingSoon

@@ -1,6 +1,6 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 50 · Permissions and approval rules (BM-072, Berfin). Figma frame: 50 · BM-072 · Permissions and approval rules · Berfin */
+/** 50 · Permissions and approval rules (BM-072, Eda). Figma frame: 50 · BM-072 · Permissions and approval rules · Eda */
 export default function PermissionsAndApprovalRulesRoute() {
   return (
     <ComingSoon

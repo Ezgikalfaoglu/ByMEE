@@ -1,6 +1,6 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 22 · Live plan (BM-034, Eda). Figma frame: 22 · BM-034 · Live plan · Eda */
+/** 22 · Live plan (BM-034, Berfin). Figma frame: 22 · BM-034 · Live plan · Berfin */
 export default function LivePlanRoute() {
   return (
     <ComingSoon

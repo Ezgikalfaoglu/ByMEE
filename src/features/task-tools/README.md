@@ -1,6 +1,6 @@
-# Türkan Eda Uluçay · Ses, görev yürütme, araştırma ve iletişim
+# Türkan Eda Uluçay · Görevler, araçlar, iletişim, araştırma ve otomasyon
 
-Branch: `Eda-Uluçay` · Klasör: `src/features/task-tools/` · Ekranlar: 18–34 (17 ekran)
+Branch: `Eda-Uluçay` · Klasör: `src/features/task-tools/` · Ekranlar: 20, 24–34, 47–51 (17 ekran)
 
 Story metinleri ve kabul kriterleri: [Beemy User Stories](https://docs.google.com/document/d/1Xb_IfONw5j9WiAaj7AdW68IzL1zRA8XK0xzPr3ZsLLw/edit) (bölüm 5, her story'de **Must have** ve **Nice to have**). İlerleme: [Beemy Sprint Tracker](https://docs.google.com/spreadsheets/d/1AuI4b5pgHaM7udlu4D6gXL_6OZD1MRKYwqPxG9lWOa8/edit). Tasarım: [Figma · Beemy · Ekranlar v6](https://www.figma.com/design/ZYNjpU7NGvws9wkmFaVq9k/?node-id=2222-1077). Rota listesi: [`docs/screens.md`](../../../docs/screens.md).
 
@@ -12,60 +12,29 @@ Uygulama varsayılan olarak İngilizce, Türkçe tam destekli. Ekrandaki metinle
 
 | No | Figma frame | Rota | Sprint | Maskot | Dosya |
 |---|---|---|---|---|---|
-| 18 | 18 · BM-016 · Voice assistant · Eda | `/voice` | 3 | Listening, mood colour | `screens/VoiceAssistantScreen.tsx` |
-| 21 | 21 · BM-020 · Task summary · Eda | `/task/[id]/summary` | 3 | Thinking, mood colour | `screens/TaskSummaryScreen.tsx` |
-| 19 | 19 · BM-024 · Type mode · Eda | `/chat/[chatId]` | 4 | Thinking, mood colour | `screens/TypeModeScreen.tsx` |
-| 20 | 20 · BM-028 · My tasks · Eda | `/tasks` | 4 | Welcome, original colour | `screens/MyTasksScreen.tsx` |
-| 22 | 22 · BM-034 · Live plan · Eda | `/task/[id]` | 5 | Researching, mood colour | `screens/LivePlanScreen.tsx` |
-| 23 | 23 · BM-035 · Agents · Eda | `/agents` | 5 | Researching, mood colour | `screens/AgentsScreen.tsx` |
-| 24 | 24 · BM-043 · Recommendations · Eda | `/task/[id]/options` | 6 | Comparing, mood colour | `screens/RecommendationsScreen.tsx` |
-| 25 | 25 · BM-044 · Comparison table · Eda | `/task/[id]/options/compare` | 6 | Comparing, mood colour | `screens/ComparisonTableScreen.tsx` |
-| 26 | 26 · BM-053 · Travel plan · Eda | `/task/[id]/travel` | 7 | Researching, mood colour | `screens/TravelPlanScreen.tsx` |
-| 29 | 29 · BM-054 · Inbox summary · Eda | `/inbox` | 7 | Researching, mood colour | `screens/InboxSummaryScreen.tsx` |
-| 30 | 30 · BM-055 · Reply draft · Eda | `/inbox/[messageId]/reply` | 7 | Thinking, mood colour | `screens/ReplyDraftScreen.tsx` |
-| 27 | 27 · BM-066 · Price tracking · Eda | `/watch` | 8 | Researching, mood colour | `screens/PriceTrackingScreen.tsx` |
-| 28 | 28 · BM-067 · Offers and negotiation · Eda | `/task/[id]/offers` | 8 | Comparing, mood colour | `screens/OffersAndNegotiationScreen.tsx` |
-| 32 | 32 · BM-068 · Scenario library · Eda | `/research` | 8 | Remembering, mood colour | `screens/ScenarioLibraryScreen.tsx` |
-| 33 | 33 · BM-069 · Run setup · Eda | `/research/run/new` | 8 | Thinking, mood colour | `screens/RunSetupScreen.tsx` |
-| 31 | 31 · BM-076 · Message search · Eda | `/inbox/search` | 9 | Researching, mood colour | `screens/MessageSearchScreen.tsx` |
-| 34 | 34 · BM-077 · A/B comparison · Eda | `/research/compare` | 9 | Comparing, mood colour | `screens/ABComparisonScreen.tsx` |
+| 20 | 20 · BM-028 · My tasks · Eda | `/tasks` | 4 | Welcome, original colour | `task-tools/screens/MyTasksScreen.tsx` |
+| 24 | 24 · BM-043 · Recommendations · Eda | `/task/[id]/options` | 6 | Comparing, mood colour | `task-tools/screens/RecommendationsScreen.tsx` |
+| 25 | 25 · BM-044 · Comparison table · Eda | `/task/[id]/options/compare` | 6 | Comparing, mood colour | `task-tools/screens/ComparisonTableScreen.tsx` |
+| 26 | 26 · BM-053 · Travel plan · Eda | `/task/[id]/travel` | 7 | Researching, mood colour | `task-tools/screens/TravelPlanScreen.tsx` |
+| 29 | 29 · BM-054 · Inbox summary · Eda | `/inbox` | 7 | Researching, mood colour | `task-tools/screens/InboxSummaryScreen.tsx` |
+| 30 | 30 · BM-055 · Reply draft · Eda | `/inbox/[messageId]/reply` | 7 | Thinking, mood colour | `task-tools/screens/ReplyDraftScreen.tsx` |
+| 27 | 27 · BM-066 · Price tracking · Eda | `/watch` | 8 | Researching, mood colour | `task-tools/screens/PriceTrackingScreen.tsx` |
+| 28 | 28 · BM-067 · Offers and negotiation · Eda | `/task/[id]/offers` | 8 | Comparing, mood colour | `task-tools/screens/OffersAndNegotiationScreen.tsx` |
+| 32 | 32 · BM-068 · Scenario library · Eda | `/research` | 8 | Remembering, mood colour | `task-tools/screens/ScenarioLibraryScreen.tsx` |
+| 33 | 33 · BM-069 · Run setup · Eda | `/research/run/new` | 8 | Thinking, mood colour | `task-tools/screens/RunSetupScreen.tsx` |
+| 50 | 50 · BM-072 · Permissions and approval rules · Eda | `/profile/permissions` | 8 | Approved, original colour | `task-tools/screens/PermissionsAndApprovalRulesScreen.tsx` |
+| 51 | 51 · BM-073 · Run log · Eda | `/research/run/[id]` | 8 | Comparing, mood colour | `task-tools/screens/RunLogScreen.tsx` |
+| 31 | 31 · BM-076 · Message search · Eda | `/inbox/search` | 9 | Researching, mood colour | `task-tools/screens/MessageSearchScreen.tsx` |
+| 34 | 34 · BM-077 · A/B comparison · Eda | `/research/compare` | 9 | Comparing, mood colour | `task-tools/screens/ABComparisonScreen.tsx` |
+| 47 | 47 · BM-078 · Workflow discovery · Eda | `/workflows/discover` | 9 | Remembering, mood colour | `task-tools/screens/WorkflowDiscoveryScreen.tsx` |
+| 48 | 48 · BM-079 · Teach by showing · Eda | `/workflows/teach` | 9 | Remembering, mood colour | `task-tools/screens/TeachByShowingScreen.tsx` |
+| 49 | 49 · BM-080 · Learned workflows · Eda | `/workflows` | 9 | Remembering, mood colour | `task-tools/screens/LearnedWorkflowsScreen.tsx` |
 
-> **Navigasyon (BM-006) hazır iskelet:** `app/` altında 51 rotanın hepsi `ComingSoon` ile duruyor. Sekmeler Home, Tasks, Log, Profile. Ses bir sekme değil: Home'daki mikrofon ve My tasks'taki “+” 18 Voice assistant'ı açar. Kalan iş: `src/i18n/en.json` ve `tr.json`, çalışma anında dil değiştirme ve ilk açılış kontrolü.
+> **23 Kasım 2026 sahiplik güncellemesi:** 18 Voice assistant, 19 Type mode, 21 Task summary, 22 Live plan, 23 Agents ve BM-015 Voice input Berfin'e geçti. Sana 47 Workflow discovery, 48 Teach by showing, 49 Learned workflows, 50 Permissions and approval rules, 51 Run log ve BM-046 Condition A and B switch geldi. Navigation shell (BM-006) sende kalıyor; rotalar değişmedi. Ekran numaraları, story ID'leri ve sprintler aynı.
 
 ## Ekran başına olmazsa olmazlar (özet)
 
 Tam liste ve “Nice to have” fikirleri story dokümanında. Bu özet PR kontrolü içindir.
-
-### 18 · BM-016 · Voice assistant
-
-_As a user, I want to just say what I need, so that I don't have to fill forms._
-
-- [ ] Mascot in Listening mood colour (teal) and the status pill “Listening”
-- [ ] Live transcript in large text; the part not yet confirmed is lighter
-- [ ] Chips for understood facts (time, people, place, budget) with a check icon
-- [ ] Buttons “Pause”, “Done” (→ 21) and “Attach”; “✕” closes, keyboard icon → 19
-- [ ] Voice wave moves while the user speaks
-- [ ] Works in English and Turkish, also mixed
-
-### 21 · BM-020 · Task summary
-
-_As a user, I want to see what Beemy understood before it starts, so that mistakes are fixed early._
-
-- [ ] Title “Here's what I understood”, mascot in Thinking mood colour
-- [ ] Rows Goal, When, Who, Budget, Must have, Avoid from the task definition (D)
-- [ ] Note “I'll ask before paying anything over ₺5.000.” (from the permission rule)
-- [ ] Tap a row to edit it, or press the mic to correct by voice
-- [ ] “Looks good, start” → 35 if no permission is set yet, otherwise → 22
-
-### 19 · BM-024 · Type mode
-
-_As a user, I want to type instead of talk, so that I can use Beemy in quiet places._
-
-- [ ] User bubbles on the right (indigo), Beemy bubbles on the left (white)
-- [ ] Quick-reply chips under a Beemy question
-- [ ] Inline result card with a “Book” button that goes through approval rules
-- [ ] Input “Message Beemy…”, attach and send buttons; mic icon → 18
-- [ ] Mascot in Thinking mood colour in the header
 
 ### 20 · BM-028 · My tasks
 
@@ -76,25 +45,6 @@ _As a user, I want to see my tasks by what needs me, so that I act on the right 
 - [ ] Needs you cards in amber with the action (Approve, Answer) and amount
 - [ ] Running cards with a step bar (step x of y)
 - [ ] Tab bar with Tasks active
-
-### 22 · BM-034 · Live plan
-
-_As a user, I want to watch my task progress live, so that I trust what Beemy is doing._
-
-- [ ] Big counter “3/5” with “steps done · about 4 min left” and a 5-part step bar
-- [ ] Mascot in Researching mood colour
-- [ ] “Now” card with the agent and what it does (e.g. 3 hotel prices)
-- [ ] Plan timeline: done, running, waiting for approval (amber “Approval”), next
-- [ ] Buttons “Change the plan” and a red stop (→ 40)
-
-### 23 · BM-035 · Agents
-
-_As a user, I want to see which agents work on my task and what they may do, so that I understand who does what._
-
-- [ ] Title “4 agents on your Antalya trip”, mascot in Researching mood colour
-- [ ] Cards Calendar, Flights, Prices, Booking with status Done / Working / Needs you
-- [ ] Card “What each agent may do” with limits (Booking up to ₺5.000, Messages drafts only, Payments always asks)
-- [ ] Tap an agent → its steps in the log
 
 ### 24 · BM-043 · Recommendations
 
@@ -185,6 +135,25 @@ _As a researcher, I want to set up a run, so that I can test a version and condi
 - [ ] Switches Use simulator data and Record every step
 - [ ] “Start run” → 51
 
+### 50 · BM-072 · Permissions and approval rules
+
+_As a user, I want one place for all permissions, so that I can change them anytime._
+
+- [ ] Cards Always ask over and Auto approve up to
+- [ ] Rows Payments, Send emails, Calendar, Share personal data, Delete things with Ask / Auto / Never
+- [ ] Never is red; Payments cannot be Auto above the limit
+- [ ] Changes are logged
+- [ ] “Permission history”
+
+### 51 · BM-073 · Run log
+
+_As a researcher, I want every step of a run, so that I can check violations and timing._
+
+- [ ] Title “Run #24” and “18 of 20 passed” with scenario and version
+- [ ] Tabs Steps, Simulator, Metrics
+- [ ] Steps with time, result and blocked steps in red
+- [ ] “Export JSON” and “Compare runs” (→ 34)
+
 ### 31 · BM-076 · Message search
 
 _As a user, I want to ask a question about my emails, so that I get the answer, not a list._
@@ -205,6 +174,34 @@ _As a researcher, I want to compare two versions, so that I know which is better
 - [ ] Significance note
 - [ ] “Run again” and “Use B”
 
+### 47 · BM-078 · Workflow discovery
+
+_As a user, I want Beemy to notice my routines, so that I can automate them._
+
+- [ ] Title “I spotted a routine” and how often it happened
+- [ ] Steps of the routine
+- [ ] “If you automate it” explains exactly what will happen
+- [ ] “Automate it” → 49; “Not now”
+- [ ] Automation still asks before paying
+
+### 48 · BM-079 · Teach by showing
+
+_As a user, I want to teach Beemy by doing a task once, so that it can repeat it._
+
+- [ ] Pill “Recording 00:42” and title “Show me once”
+- [ ] “What I saw” list with captured steps; the current step is marked
+- [ ] Password fields are never recorded (note shown)
+- [ ] Buttons Pause, Finish (red), Discard
+
+### 49 · BM-080 · Learned workflows
+
+_As a user, I want to see and switch my learned workflows, so that I stay in control._
+
+- [ ] Title “3 learned workflows”
+- [ ] Each card: name, trigger, switch and tags (runs, limits)
+- [ ] Paused workflows shown with a Paused tag
+- [ ] “Teach a new one” → 48 and mic
+
 ## Diğer story'lerim
 
 | ID | Story | Sprint | Dosyalar |
@@ -212,10 +209,10 @@ _As a researcher, I want to compare two versions, so that I know which is better
 | BM-004 | Task definition schema | 1 | `src/types/taskDefinition.ts`, `src/types/taskDefinition.test.ts` |
 | BM-006 | Navigation shell, routes and EN/TR text files | 1 | `app/_layout.tsx`, `app/(tabs)/_layout.tsx`, `src/i18n/en.json`, `src/i18n/tr.json` |
 | BM-011 | Scenario drafts: career, moving, messaging and calendar | 2 | `eval/scenarios/KAR-*.json`, `eval/scenarios/TAS-*.json`, `eval/scenarios/YAZ-*.json` |
-| BM-015 | Voice input and spoken replies | 2 | `src/voice/useSpeech.ts`, `src/voice/speak.ts` |
 | BM-027 | Request parser (EN and TR) with tests | 4 | `src/agent/parseRequest.ts`, `src/agent/parseRequest.test.ts` |
 | BM-033 | Planner and shared tool interface | 5 | `src/agent/planner.ts`, `src/tools/types.ts` |
 | BM-042 | Search, compare and document tools | 6 | `src/tools/search.ts`, `src/tools/compare.ts`, `src/tools/documents.ts` |
+| BM-046 | Condition A and B switch | 6 | `src/execution/policy.ts` |
 | BM-052 | Messaging, calendar and tracking tools | 7 | `src/tools/messaging.ts`, `src/tools/calendar.ts`, `src/tools/tracking.ts` |
 | BM-083 | Stop and question scenario review, violations | 10 | `eval/analysis/review.md` |
 

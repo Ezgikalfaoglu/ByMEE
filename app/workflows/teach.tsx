@@ -1,6 +1,6 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 48 · Teach by showing (BM-079, Berfin). Figma frame: 48 · BM-079 · Teach by showing · Berfin */
+/** 48 · Teach by showing (BM-079, Eda). Figma frame: 48 · BM-079 · Teach by showing · Eda */
 export default function TeachByShowingRoute() {
   return (
     <ComingSoon

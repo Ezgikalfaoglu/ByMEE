@@ -1,6 +1,6 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 51 · Run log (BM-073, Berfin). Figma frame: 51 · BM-073 · Run log · Berfin */
+/** 51 · Run log (BM-073, Eda). Figma frame: 51 · BM-073 · Run log · Eda */
 export default function RunLogRoute() {
   return (
     <ComingSoon

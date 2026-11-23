@@ -1,6 +1,6 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 21 · Task summary (BM-020, Eda). Figma frame: 21 · BM-020 · Task summary · Eda */
+/** 21 · Task summary (BM-020, Berfin). Figma frame: 21 · BM-020 · Task summary · Berfin */
 export default function TaskSummaryRoute() {
   return (
     <ComingSoon

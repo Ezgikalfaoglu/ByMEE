@@ -1,6 +1,6 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 23 · Agents (BM-035, Eda). Figma frame: 23 · BM-035 · Agents · Eda */
+/** 23 · Agents (BM-035, Berfin). Figma frame: 23 · BM-035 · Agents · Berfin */
 export default function AgentsRoute() {
   return (
     <ComingSoon

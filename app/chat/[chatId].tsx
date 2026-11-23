@@ -1,6 +1,6 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 19 · Type mode (BM-024, Eda). Figma frame: 19 · BM-024 · Type mode · Eda */
+/** 19 · Type mode (BM-024, Berfin). Figma frame: 19 · BM-024 · Type mode · Berfin */
 export default function TypeModeRoute() {
   return (
     <ComingSoon

@@ -1,6 +1,6 @@
 import { ComingSoon } from '@/navigation/ComingSoon';
 
-/** 18 · Voice assistant (BM-016, Eda). Figma frame: 18 · BM-016 · Voice assistant · Eda */
+/** 18 · Voice assistant (BM-016, Berfin). Figma frame: 18 · BM-016 · Voice assistant · Berfin */
 export default function VoiceAssistantRoute() {
   return (
     <ComingSoon

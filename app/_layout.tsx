@@ -21,7 +21,7 @@ SplashScreen.preventAutoHideAsync();
  * - onboarding: 01, 02, 07, 08 and auth: 03–06 (no tab bar)
  * - (tabs): Home 09–10, Tasks 20, Log 45–46, Profile 11–16 and 50
  * - voice: 18 (full screen), chat/[chatId]: 19
- * - task/[id]: task flow 21–22, 24–26, 28 (Eda) and 35–44 (Berfin)
+ * - task/[id]: task flow 21–22, 35–44 (Berfin) and 24–26, 28 (Eda)
  * - agents 23, watch 27, inbox 29–31, workflows 47–49
  * - research: 17, 32–34, 51 (no tab bar)
  */

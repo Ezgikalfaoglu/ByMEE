@@ -1,7 +1,7 @@
 import { Stack } from 'expo-router';
 import { subScreenOptions } from '@/navigation/stackOptions';
 
-/** BM-006: task flow, no tab bar. Eda 21–26, 28 and Berfin 35–44. 39 Voice question draws its own header. */
+/** BM-006: task flow, no tab bar. Berfin 21–23, 35–44 and Eda 24–26, 28. 39 Voice question draws its own header. */
 export default function TaskLayout() {
   return (
     <Stack screenOptions={{ ...subScreenOptions, title: '' }}>
