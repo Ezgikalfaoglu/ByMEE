@@ -77,8 +77,9 @@ src/types/              ortak tipler (BM-004 görev tanımı, Eda)
 src/services/           mock temeli (BM-003, Berfin)
 src/utils/              formatMoney() gibi yardımcılar (BM-003, Berfin)
 src/features/start-profile/   Melike, ekran 01-17 (hesap, ana sayfa, kişiselleştirme)
-src/features/task-tools/      Eda, ekran 18-34 (ses, görev yürütme, araştırma, iletişim)
-src/features/authority/       Berfin, ekran 35-51 (yetki, onay, tamamlama, otomasyon, kayıt)
+src/features/task-tools/      Eda, ekran 20, 24-34, 47-51 (görevler, araçlar, iletişim, araştırma, otomasyon)
+src/features/assistant/       Berfin, ekran 18, 19, 21-23 (sesli asistan ve görev akışı)
+src/features/authority/       Berfin, ekran 35-46 (yetki, onay, tamamlama, kayıt)
 docs/                   gereksinimler, user story dizini, ekran listesi (Ezgi)
 ```
 
@@ -103,8 +104,8 @@ Import'larda `@/` kısayolu `src/` klasörünü gösterir: `import { Button } fr
 | Kişi | Sistem | Branch | Ekranlar |
 |---|---|---|---|
 | Melike Şahin | macOS | `Melike-Sahin` | 01–17 |
-| Türkan Eda Uluçay | Windows | `Eda-Uluçay` | 18–34 |
-| Ayşe Berfin Özçelik | macOS | `Berfin-Ozcelik` | 35–51 |
+| Türkan Eda Uluçay | Windows | `Eda-Uluçay` | 20, 24–34, 47–51 |
+| Ayşe Berfin Özçelik | macOS | `Berfin-Ozcelik` | 18, 19, 21–23, 35–46 |
 | Ezginur Kalfaoğlu (Proje yöneticisi) | Kendi sistemi | `main` | Ekran yok: repolar, main, dokümanlar, PR inceleme, final rapor |
 
 ## Proje kurulumu (PM)
@@ -138,4 +139,4 @@ Her geliştiricinin branch'inde kendi klasörünün `README.md` dosyası var. İ
 
 - Melike: `src/features/start-profile/README.md`
 - Eda: `src/features/task-tools/README.md`
-- Berfin: `src/features/authority/README.md`
+- Berfin: `src/features/authority/README.md` (sesli asistan ekranları için de geçerli)
