@@ -33,6 +33,8 @@ The project is the prototype of the TÜBİTAK 2209-A proposal “Kişisel Yapay 
 | Tasks, tools, messages, research and automation: my tasks, recommendations, comparison table, travel plan, price tracking, offers, inbox summary, reply draft, message search, scenario library, run setup, A/B comparison, workflow discovery, teach by showing, learned workflows, permissions and approval rules, run log | 20, 24–34, 47–51 | Eda |
 | Project management: documents, repositories, main, PR reviews, final report | — | Ezgi |
 
+In Sprints 8 and 9 Berfin supports Eda with screen tests and PR reviews, because Eda's screens 27–34 and 47–51 depend on the tools from Sprint 7.
+
 All data, people, companies and actions are **synthetic**. Every simulated action is written to the simulator record and, in research mode, shown with the badge “Simulation · synthetic data” (Turkish: “Simülasyon · sentetik veri”).
 
 Out of scope: real payments, real e-mail or phone calls, real personal accounts, human participants.
