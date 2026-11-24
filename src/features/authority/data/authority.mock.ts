@@ -1,61 +1,85 @@
 /**
- * Mock data and in-memory store for task authority (BM-013, Berfin).
+ * Mock authorityService and in-memory store (BM-013, Berfin).
  *
+ * Same names as the doc's service table: getRule(taskId), saveRule(rule).
  * Goes through `run('execution', …)` like every mock (BM-003): 600 ms delay,
  * `failNextCall('execution')` for the error state, `simulated: true` on every result.
  *
- * The proposal is sample data for the career scenario shown on the Figma frame.
- * When BM-004 (task definition) lands, `getAuthorityProposal` derives it from the
- * task's allowed actions, people in scope, shareable documents, valid until and amount cap.
+ * The sample task is the one on the Figma frame ("Antalya trip"). When BM-004
+ * (task definition) lands, `getAuthoritySetup` reads the title, the people in
+ * scope and the end date from the real task.
+ * The doc places the real service in src/execution/authority.ts (shared folder);
+ * it moves there with Ezgi's OK, the screen keeps calling the same functions.
  */
 
 import { clone, nowIso, run, type Result } from '@/services';
 import type { Id } from '@/types/common';
-import type { AuthorityProposal, TaskAuthority } from '../types';
-import { authorityTexts as t } from './authority.texts';
+import type { AuthorityRule, AuthorityTask } from '../types';
 
-/** Elif Yılmaz applies for a job: the example on the Figma frame "21 · BM-013 · Authority setup · Berfin". */
-export const sampleAuthorityProposal: AuthorityProposal = {
-  taskId: 'demo',
-  actions: [
-    { kind: 'search', label: 'İlan ara ve karşılaştır' },
-    { kind: 'prepare_document', label: 'CV ve başvuru mesajı hazırla' },
-    { kind: 'send', label: 'Başvuruyu gönder' },
-    { kind: 'pay', label: t.pay },
-    { kind: 'share_document', label: t.shareDocument },
-  ],
-  limits: {
-    recipient: 'Yalnızca ilan sahibi şirket',
-    shareableData: ['CV_en.pdf', 'e-posta'],
-    validUntil: '2026-11-27T23:59:00+03:00',
-    amountCap: 0,
-  },
+/** Elif Yılmaz plans a trip to Antalya: the example on frame "35 · BM-013 · Authority setup · Berfin". */
+export const sampleTask: AuthorityTask = {
+  id: 'demo',
+  title: 'Antalya trip',
+  shareRecipients: ['hotel'],
+  endsAt: null,
 };
 
-/** Authority is stored with the task (keyed by task id), never in the profile. */
-const granted = new Map<Id, TaskAuthority>();
+/** A log line written when a rule is saved (status 'auto', title "Permissions set for {task}"). */
+export type AuthorityLogEntry = {
+  id: Id;
+  taskId: Id;
+  status: 'auto';
+  title: string;
+  at: string;
+};
 
-/** The proposal for a task. Unknown ids get the sample proposal until BM-004 provides real tasks. */
-export function getAuthorityProposal(taskId: Id): Promise<Result<AuthorityProposal>> {
-  return run('execution', () => ({ ...clone(sampleAuthorityProposal), taskId }));
+/** Rules are stored with the task (keyed by task id), never in the profile. */
+const rules = new Map<Id, AuthorityRule>();
+const log: AuthorityLogEntry[] = [];
+
+/** Task info for the header plus the rule saved earlier, if any. */
+export function getAuthoritySetup(taskId: Id): Promise<Result<{ task: AuthorityTask; rule: AuthorityRule | null }>> {
+  return run('execution', () => ({
+    task: { ...clone(sampleTask), id: taskId },
+    rule: readRule(taskId),
+  }));
 }
 
-/** "Yetkiyi ver ve başlat": stores the authority with the task and stamps `grantedAt`. */
-export function grantAuthority(authority: TaskAuthority): Promise<Result<TaskAuthority>> {
+/** authorityService.getRule(taskId): the saved rule or null. */
+export function getRule(taskId: Id): Promise<Result<AuthorityRule | null>> {
+  return run('execution', () => readRule(taskId));
+}
+
+/** authorityService.saveRule(rule): "Save permissions". Stores the rule with the task and writes the log line. */
+export function saveRule(rule: AuthorityRule, taskTitle: string): Promise<Result<AuthorityRule>> {
   return run('execution', () => {
-    const stored: TaskAuthority = { ...clone(authority), grantedAt: nowIso() };
-    granted.set(stored.taskId, stored);
+    const stored: AuthorityRule = { ...clone(rule), savedAt: nowIso() };
+    const key = stored.taskId ?? 'global';
+    rules.set(key, stored);
+    log.push({
+      id: `log-${log.length + 1}`,
+      taskId: key,
+      status: 'auto',
+      title: `Permissions set for ${taskTitle}`,
+      at: stored.savedAt ?? nowIso(),
+    });
     return clone(stored);
   });
 }
 
-/** Synchronous read for the execution layer (BM-023) and tests. Undefined when nothing was granted. */
-export function readGrantedAuthority(taskId: Id): TaskAuthority | undefined {
-  const stored = granted.get(taskId);
-  return stored ? clone(stored) : undefined;
+/** Synchronous read for the execution layer (BM-029, BM-037) and tests. */
+export function readRule(taskId: Id): AuthorityRule | null {
+  const stored = rules.get(taskId);
+  return stored ? clone(stored) : null;
+}
+
+/** Log lines written by this mock, for 45 Activity log (BM-070) and tests. */
+export function readAuthorityLog(): AuthorityLogEntry[] {
+  return clone(log);
 }
 
 /** Tests call this in beforeEach. */
 export function resetAuthorityMock() {
-  granted.clear();
+  rules.clear();
+  log.length = 0;
 }

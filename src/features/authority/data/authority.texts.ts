@@ -1,34 +1,34 @@
 /**
- * Texts of screen 21 Authority setup (BM-013).
+ * Texts of screen 35 Authority setup (BM-013). i18n keys: authority.*
  *
- * The "Must keep" lines are copied from the story word for word.
- * BM-006 (Eda) adds src/i18n/tr.json and en.json; these keys move there unchanged
- * and this file becomes a thin lookup, so the screen does not change.
+ * Quoted texts are the exact English UI text from the story. BM-006 (Eda) adds
+ * src/i18n/en.json and tr.json; these keys move there unchanged and this file
+ * becomes a thin lookup, so the screen does not change.
+ * The last three lines are the standard messages from "1.2 Standard messages".
  */
 export const authorityTexts = {
-  header: 'Yetki',
-  title: 'Beemy neyi yapabilir?',
-  scope: 'Bu yetki yalnızca bu görev için geçerli.',
+  back: 'Back',
+  heading: 'How much can I do on my own?',
 
-  allowedActions: 'İzinli eylemler',
-  pay: 'Ödeme yap',
-  shareDocument: 'Belgeyi başka kişiyle paylaş',
+  limitLabel: 'Spending limit per action',
+  drag: 'Drag to change',
+  limitZeroNote: 'Beemy will ask before every action.',
 
-  limits: 'Sınırlar',
-  recipient: 'Alıcı',
-  shareable: 'Paylaşılabilir',
-  validUntil: 'Geçerlilik',
-  amountCap: 'Tutar üst sınırı',
+  autoBook: 'Book under the limit without asking',
+  shareContact: 'Share my phone and email',
+  shareContactHint: 'Only with the hotel',
+  payWithSavedCard: 'Pay with my saved card',
+  payWithSavedCardHint: 'I always ask first',
 
-  bindingActions: 'Bağlayıcı işlemlerde',
-  delegate: 'Görevi devret',
-  askBeforeEach: 'Her işlemden önce sor',
+  validFor: 'Valid for',
+  thisTask: 'This task',
+  sevenDays: '7 days',
+  always: 'Always',
 
-  start: 'Yetkiyi ver ve başlat',
+  save: 'Save permissions',
 
-  loading: 'Yetki hazırlanıyor…',
-  loadError: 'Yetki bilgisi yüklenemedi.',
-  startError: 'Yetki kaydedilemedi. Tekrar dene.',
-  retry: 'Tekrar dene',
-  mascotLabel: 'Beemy düşünüyor',
+  loading: 'Loading…',
+  loadError: "Couldn't load this. Try again.",
+  retry: 'Try again',
+  actionFailed: "That didn't work. Nothing was changed.",
 } as const;

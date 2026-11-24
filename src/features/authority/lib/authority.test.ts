@@ -1,113 +1,125 @@
 import {
-  createAuthority,
-  isActionAllowed,
-  isAmountAllowed,
-  isSensitive,
-  isValidAt,
-  requiresApprovalBeforeAction,
-  setActionEnabled,
-  setCondition,
+  DEFAULT_LIMIT,
+  LIMIT_MAX,
+  asksBeforeEveryAction,
+  clampLimit,
+  createDefaultRule,
+  decideBooking,
+  decidePayment,
+  decideShareContact,
+  expiresAtFor,
+  isRuleActive,
+  setLimit,
+  setSwitch,
+  setValidFor,
 } from './authority';
-import type { AuthorityProposal } from '../types';
+import type { AuthorityTask } from '../types';
 
-const proposal: AuthorityProposal = {
-  taskId: 'task-1',
-  actions: [
-    { kind: 'search', label: 'İlan ara ve karşılaştır' },
-    { kind: 'prepare_document', label: 'CV ve başvuru mesajı hazırla' },
-    { kind: 'send', label: 'Başvuruyu gönder' },
-    { kind: 'pay', label: 'Ödeme yap' },
-    { kind: 'share_document', label: 'Belgeyi başka kişiyle paylaş' },
-  ],
-  limits: {
-    recipient: 'Yalnızca ilan sahibi şirket',
-    shareableData: ['CV_en.pdf', 'e-posta'],
-    validUntil: '2026-11-27T23:59:00+03:00',
-    amountCap: 500,
-  },
+const task: AuthorityTask = {
+  id: 'task-1',
+  title: 'Antalya trip',
+  shareRecipients: ['hotel'],
+  endsAt: '2026-12-15T23:59:00+03:00',
 };
+const now = new Date('2026-12-01T10:00:00+03:00');
 
-const during = new Date('2026-11-25T10:00:00+03:00');
-const after = new Date('2026-11-28T00:00:00+03:00');
-
-describe('authority rules (BM-013)', () => {
-  it('"Ödeme yap" and "Belgeyi başka kişiyle paylaş" are off by default, the rest on', () => {
-    const authority = createAuthority(proposal);
-    const enabled = Object.fromEntries(authority.actions.map((a) => [a.kind, a.enabled]));
-    expect(enabled).toEqual({
-      search: true,
-      prepare_document: true,
-      send: true,
-      pay: false,
-      share_document: false,
+describe('authority rule (BM-013)', () => {
+  it('starts at ₺5.000, book and share on, saved card off, valid for this task', () => {
+    const rule = createDefaultRule(task, now);
+    expect(rule).toMatchObject({
+      taskId: 'task-1',
+      limitPerAction: DEFAULT_LIMIT,
+      autoBook: true,
+      shareContact: true,
+      shareRecipients: ['hotel'],
+      payWithSavedCard: false,
+      validFor: 'task',
+      expiresAt: task.endsAt,
     });
-    expect(isSensitive('pay')).toBe(true);
-    expect(isSensitive('send')).toBe(false);
   });
 
-  it('defaults to condition B and keeps the task id, never the profile', () => {
-    const authority = createAuthority(proposal);
-    expect(authority.condition).toBe('B');
-    expect(authority.taskId).toBe('task-1');
-    expect(requiresApprovalBeforeAction(authority)).toBe(false);
-    expect(requiresApprovalBeforeAction(setCondition(authority, 'A'))).toBe(true);
+  it('snaps the limit to ₺500 steps between ₺0 and ₺10.000', () => {
+    expect(clampLimit(5200)).toBe(5000);
+    expect(clampLimit(5250)).toBe(5500);
+    expect(clampLimit(-100)).toBe(0);
+    expect(clampLimit(99999)).toBe(LIMIT_MAX);
+    expect(clampLimit(Number.NaN)).toBe(0);
+    expect(setLimit(createDefaultRule(task, now), 8450).limitPerAction).toBe(8500);
   });
 
-  it('given "Ödeme yap" is off, no payment action is ever allowed', () => {
-    const authority = createAuthority(proposal);
-    expect(isActionAllowed(authority, 'pay', during)).toBe(false);
-    expect(isAmountAllowed(authority, 0, during)).toBe(false);
-    expect(isAmountAllowed(authority, 100, during)).toBe(false);
-    // Turning other actions on or off does not change that.
-    const changed = setActionEnabled(setActionEnabled(authority, 'send', false), 'search', true);
-    expect(isActionAllowed(changed, 'pay', during)).toBe(false);
+  it('"Valid for" sets expiresAt: end of task / +7 days / null', () => {
+    expect(expiresAtFor('task', task, now)).toBe(task.endsAt);
+    expect(expiresAtFor('task', { ...task, endsAt: null }, now)).toBeNull();
+    expect(expiresAtFor('7d', task, now)).toBe('2026-12-08T07:00:00.000Z');
+    expect(expiresAtFor('always', task, now)).toBeNull();
+    const rule = setValidFor(createDefaultRule(task, now), 'always', task, now);
+    expect(rule.validFor).toBe('always');
+    expect(rule.expiresAt).toBeNull();
   });
 
-  it('a payment needs the switch on and an amount within the cap', () => {
-    const authority = setActionEnabled(createAuthority(proposal), 'pay', true);
-    expect(isActionAllowed(authority, 'pay', during)).toBe(true);
-    expect(isAmountAllowed(authority, 500, during)).toBe(true);
-    expect(isAmountAllowed(authority, 500.01, during)).toBe(false);
-    expect(isAmountAllowed(authority, -1, during)).toBe(false);
-    expect(isAmountAllowed(authority, Number.NaN, during)).toBe(false);
+  it('given ₺5.000 and This task, when Beemy proposes ₺8.450, then the decision is needs_approval', () => {
+    const rule = createDefaultRule(task, now);
+    expect(decideBooking(rule, 8450, 'B', now)).toBe('needs_approval');
   });
 
-  it('an amount cap of 0 allows no payment even when the switch is on', () => {
-    const zeroCap: AuthorityProposal = { ...proposal, limits: { ...proposal.limits, amountCap: 0 } };
-    const authority = setActionEnabled(createAuthority(zeroCap), 'pay', true);
-    expect(isAmountAllowed(authority, 1, during)).toBe(false);
-    expect(isAmountAllowed(authority, 0, during)).toBe(true);
+  it('given ₺10.000, when it proposes ₺8.450 with Book on, then it books without asking (condition B)', () => {
+    const rule = setLimit(createDefaultRule(task, now), 10000);
+    expect(decideBooking(rule, 8450, 'B', now)).toBe('auto');
   });
 
-  it('preparing a document and sending it are separate permissions', () => {
-    const authority = setActionEnabled(createAuthority(proposal), 'send', false);
-    expect(isActionAllowed(authority, 'prepare_document', during)).toBe(true);
-    expect(isActionAllowed(authority, 'send', during)).toBe(false);
+  it('condition A ignores "Book without asking" and always asks', () => {
+    const rule = setLimit(createDefaultRule(task, now), 10000);
+    expect(decideBooking(rule, 100, 'A', now)).toBe('needs_approval');
   });
 
-  it('nothing is allowed after validUntil or with an unreadable date', () => {
-    const authority = createAuthority(proposal);
-    expect(isValidAt(authority, during)).toBe(true);
-    expect(isValidAt(authority, after)).toBe(false);
-    expect(isActionAllowed(authority, 'search', after)).toBe(false);
-    const broken = { ...authority, limits: { ...authority.limits, validUntil: 'yarın' } };
-    expect(isActionAllowed(broken, 'search', during)).toBe(false);
+  it('"Book under the limit" off means every booking asks', () => {
+    const rule = setSwitch(createDefaultRule(task, now), 'autoBook', false);
+    expect(decideBooking(rule, 100, 'B', now)).toBe('needs_approval');
   });
 
-  it('an action the task never proposed is not allowed', () => {
-    const noPay: AuthorityProposal = { ...proposal, actions: proposal.actions.filter((a) => a.kind !== 'pay') };
-    const authority = createAuthority(noPay);
-    expect(isActionAllowed(authority, 'pay', during)).toBe(false);
-    expect(setActionEnabled(authority, 'pay', true).actions.some((a) => a.kind === 'pay')).toBe(false);
+  it('limit 0 means Beemy asks before every action', () => {
+    const rule = setLimit(createDefaultRule(task, now), 0);
+    expect(asksBeforeEveryAction(rule)).toBe(true);
+    expect(decideBooking(rule, 1, 'B', now)).toBe('needs_approval');
+    expect(decideBooking(rule, 0, 'B', now)).toBe('auto');
+    expect(asksBeforeEveryAction(createDefaultRule(task, now))).toBe(false);
   });
 
-  it('never mutates the proposal or a previous authority', () => {
-    const authority = createAuthority(proposal);
-    const changed = setActionEnabled(setCondition(authority, 'A'), 'send', false);
-    expect(authority.condition).toBe('B');
-    expect(authority.actions.find((a) => a.kind === 'send')?.enabled).toBe(true);
-    expect(changed.actions.find((a) => a.kind === 'send')?.enabled).toBe(false);
-    changed.limits.shareableData.push('x');
-    expect(proposal.limits.shareableData).toEqual(['CV_en.pdf', 'e-posta']);
+  it('nothing is automatic after expiresAt or with an unreadable date', () => {
+    const rule = createDefaultRule(task, now);
+    const later = new Date('2026-12-16T00:00:00+03:00');
+    expect(isRuleActive(rule, now)).toBe(true);
+    expect(isRuleActive(rule, later)).toBe(false);
+    expect(decideBooking(rule, 100, 'B', later)).toBe('needs_approval');
+    expect(decideShareContact(rule, 'hotel', later)).toBe('needs_approval');
+    expect(isRuleActive({ ...rule, expiresAt: 'yarın' }, now)).toBe(false);
+    expect(isRuleActive({ ...rule, expiresAt: null }, later)).toBe(true);
+  });
+
+  it('a payment is never silent: saved card on asks first, off blocks the card', () => {
+    const off = createDefaultRule(task, now);
+    expect(decidePayment(off, 100)).toBe('blocked');
+    const on = setSwitch(off, 'payWithSavedCard', true);
+    expect(decidePayment(on, 100)).toBe('needs_approval');
+    expect(decidePayment(on, 0)).toBe('needs_approval');
+    expect(decidePayment(on, -5)).toBe('blocked');
+    expect(decideBooking(on, Number.NaN, 'B', now)).toBe('blocked');
+  });
+
+  it('contact details go only to the named recipients', () => {
+    const rule = createDefaultRule(task, now);
+    expect(decideShareContact(rule, 'hotel', now)).toBe('auto');
+    expect(decideShareContact(rule, 'airline', now)).toBe('needs_approval');
+    expect(decideShareContact(setSwitch(rule, 'shareContact', false), 'hotel', now)).toBe('needs_approval');
+  });
+
+  it('never mutates the task or a previous rule', () => {
+    const rule = createDefaultRule(task, now);
+    const changed = setSwitch(setLimit(rule, 0), 'autoBook', false);
+    expect(rule.limitPerAction).toBe(DEFAULT_LIMIT);
+    expect(rule.autoBook).toBe(true);
+    expect(changed.limitPerAction).toBe(0);
+    changed.shareRecipients.push('airline');
+    expect(task.shareRecipients).toEqual(['hotel']);
   });
 });

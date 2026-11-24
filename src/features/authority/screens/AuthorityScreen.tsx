@@ -1,57 +1,68 @@
 /**
- * 21 · BM-013 · Authority setup · Berfin  —  route /task/[id]/authority
+ * 35 · BM-013 · Authority setup · Berfin  —  route /task/[id]/authority
  *
- * The user gives Beemy its authority once, at the start of the task:
- * which actions are allowed, within which limits, and whether Beemy asks
- * before every binding action (condition A) or runs the task on its own (condition B).
- * "Yetkiyi ver ve başlat" stores the authority with the task and opens 14 Plan and progress.
+ * The user sets how much Beemy may do on its own for this task: a spending
+ * limit per action, three permission switches and how long the rule is valid.
+ * "Save permissions" stores the AuthorityRule with the task and opens 22 Live plan.
+ * Back goes to 21 Task summary.
  */
 
+import { StatusBar } from 'expo-status-bar';
 import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { AppText, Button, Card, Screen, ScreenHeader, StateView } from '@/components';
+import { AppText, Button, Screen, StateView } from '@/components';
 import { isServiceError } from '@/services';
 import { colors, spacing } from '@/theme';
-import type { Condition, Id } from '@/types/common';
-import { ActionSwitchRow } from '../components/ActionSwitchRow';
-import { BeemyMascot } from '../components/BeemyMascot';
-import { ConditionChoice } from '../components/ConditionChoice';
-import { LimitRow } from '../components/LimitRow';
+import type { Id } from '@/types/common';
+import { IndigoPanel } from '../components/IndigoPanel';
+import { LimitSlider } from '../components/LimitSlider';
+import { PermissionSwitchRow } from '../components/PermissionSwitchRow';
 import { SectionLabel } from '../components/SectionLabel';
-import { getAuthorityProposal, grantAuthority } from '../data/authority.mock';
+import { SegmentedControl, type SegmentedOption } from '../components/SegmentedControl';
+import { getAuthoritySetup, saveRule } from '../data/authority.mock';
 import { authorityTexts as t } from '../data/authority.texts';
-import { createAuthority, isSensitive, setActionEnabled, setCondition } from '../lib/authority';
-import { formatAmountCap, formatShareable, formatValidUntil } from '../lib/format';
-import type { ActionKind, AuthorityAction, TaskAuthority } from '../types';
+import {
+  LIMIT_MAX,
+  LIMIT_MIN,
+  LIMIT_STEP,
+  asksBeforeEveryAction,
+  createDefaultRule,
+  setLimit,
+  setSwitch,
+  setValidFor,
+} from '../lib/authority';
+import { formatLimit, formatLiraSpoken } from '../lib/format';
+import type { AuthorityRule, AuthorityTask, ValidFor } from '../types';
 
 export type AuthorityScreenProps = {
   taskId: Id;
-  /** Called after the authority is stored with the task. The route opens 14 Plan and progress. */
-  onStart: (authority: TaskAuthority) => void;
-  /** Back arrow. Defaults to going back in the stack. */
-  onBack?: () => void;
+  /** Called after the rule is stored with the task. The route opens 22 Live plan. */
+  onSaved: (rule: AuthorityRule) => void;
+  /** Back arrow → 21 Task summary. */
+  onBack: () => void;
 };
 
 type LoadState = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready' };
 
-/** The sensitive actions always show their "Must keep" text, whatever the task proposes. */
-function labelOf(action: AuthorityAction): string {
-  if (action.kind === 'pay') return t.pay;
-  if (action.kind === 'share_document') return t.shareDocument;
-  return action.label;
-}
+const validForOptions: SegmentedOption<ValidFor>[] = [
+  { value: 'task', label: t.thisTask },
+  { value: '7d', label: t.sevenDays },
+  { value: 'always', label: t.always },
+];
 
-export function AuthorityScreen({ taskId, onStart, onBack }: AuthorityScreenProps) {
+export function AuthorityScreen({ taskId, onSaved, onBack }: AuthorityScreenProps) {
   const [load, setLoad] = useState<LoadState>({ status: 'loading' });
-  const [authority, setAuthority] = useState<TaskAuthority | null>(null);
-  const [starting, setStarting] = useState(false);
-  const [startError, setStartError] = useState<string | null>(null);
+  const [task, setTask] = useState<AuthorityTask | null>(null);
+  const [rule, setRule] = useState<AuthorityRule | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
-  const loadProposal = useCallback(async () => {
+  const loadSetup = useCallback(async () => {
     setLoad({ status: 'loading' });
     try {
-      const { data } = await getAuthorityProposal(taskId);
-      setAuthority(createAuthority(data));
+      const { data } = await getAuthoritySetup(taskId);
+      setTask(data.task);
+      setRule(data.rule ?? createDefaultRule(data.task));
       setLoad({ status: 'ready' });
     } catch (error) {
       setLoad({ status: 'error', message: isServiceError(error) ? error.message : t.loadError });
@@ -59,36 +70,31 @@ export function AuthorityScreen({ taskId, onStart, onBack }: AuthorityScreenProp
   }, [taskId]);
 
   useEffect(() => {
-    void loadProposal();
-  }, [loadProposal]);
+    void loadSetup();
+  }, [loadSetup]);
 
-  const toggleAction = (kind: ActionKind, enabled: boolean) =>
-    setAuthority((current) => (current ? setActionEnabled(current, kind, enabled) : current));
+  const update = (change: (current: AuthorityRule) => AuthorityRule) =>
+    setRule((current) => (current ? change(current) : current));
 
-  const chooseCondition = (condition: Condition) =>
-    setAuthority((current) => (current ? setCondition(current, condition) : current));
-
-  const start = async () => {
-    if (!authority || starting) return;
-    setStarting(true);
-    setStartError(null);
+  const save = async () => {
+    if (!rule || !task || saving) return;
+    setSaving(true);
+    setSaveError(null);
     try {
-      const { data } = await grantAuthority(authority);
-      onStart(data);
+      const { data } = await saveRule(rule, task.title);
+      onSaved(data);
     } catch (error) {
-      setStartError(isServiceError(error) ? error.message : t.startError);
+      setSaveError(isServiceError(error) ? error.message : t.actionFailed);
     } finally {
-      setStarting(false);
+      setSaving(false);
     }
   };
 
-  const header = <ScreenHeader title={t.header} showBack onBack={onBack} />;
-
-  if (load.status !== 'ready' || !authority) {
+  if (load.status !== 'ready' || !rule || !task) {
     return (
-      <Screen header={header} scroll={false}>
+      <Screen scroll={false}>
         {load.status === 'error' ? (
-          <StateView state="error" message={load.message} actionLabel={t.retry} onAction={loadProposal} />
+          <StateView state="error" message={load.message} actionLabel={t.retry} onAction={loadSetup} />
         ) : (
           <StateView state="loading" message={t.loading} />
         )}
@@ -96,66 +102,96 @@ export function AuthorityScreen({ taskId, onStart, onBack }: AuthorityScreenProp
     );
   }
 
-  const { limits } = authority;
-
   return (
     <Screen
-      header={header}
+      edges={['bottom']}
+      contentStyle={styles.content}
       footer={
         <View style={styles.footer}>
-          {startError ? (
+          {saveError ? (
             <AppText variant="caption" color={colors.danger} center accessibilityLiveRegion="polite">
-              {startError}
+              {saveError}
             </AppText>
           ) : null}
-          <Button label={t.start} onPress={start} loading={starting} />
+          <Button label={t.save} onPress={save} loading={saving} style={styles.saveButton} />
         </View>
       }
     >
-      <View style={styles.intro}>
-        <BeemyMascot mood="dusunuyor" accessibilityLabel={t.mascotLabel} />
-        <View style={styles.introText}>
-          <AppText variant="heading" accessibilityRole="header">
-            {t.title}
-          </AppText>
-          <AppText variant="caption" muted>
-            {t.scope}
-          </AppText>
-        </View>
-      </View>
+      <StatusBar style="light" />
+      <IndigoPanel title={task.title} heading={t.heading} mood="thinking" backLabel={t.back} onBack={onBack} />
 
-      <Card>
-        <SectionLabel>{t.allowedActions}</SectionLabel>
-        {authority.actions.map((action) => (
-          <ActionSwitchRow
-            key={action.kind}
-            label={labelOf(action)}
-            enabled={action.enabled}
-            locked={isSensitive(action.kind)}
-            onChange={(enabled) => toggleAction(action.kind, enabled)}
+      <View style={styles.body}>
+        <View style={[styles.card, styles.limitCard]}>
+          <SectionLabel size={12}>{t.limitLabel}</SectionLabel>
+          <AppText style={styles.limitValue} accessibilityLiveRegion="polite">
+            {formatLimit(rule.limitPerAction)}
+          </AppText>
+          <LimitSlider
+            value={rule.limitPerAction}
+            min={LIMIT_MIN}
+            max={LIMIT_MAX}
+            step={LIMIT_STEP}
+            onChange={(value) => update((current) => setLimit(current, value))}
+            label={t.drag}
+            format={formatLimit}
+            spoken={formatLiraSpoken}
           />
-        ))}
-      </Card>
+          {asksBeforeEveryAction(rule) ? (
+            <AppText variant="caption" muted accessibilityLiveRegion="polite">
+              {t.limitZeroNote}
+            </AppText>
+          ) : null}
+        </View>
 
-      <Card>
-        <SectionLabel>{t.limits}</SectionLabel>
-        <LimitRow label={t.recipient} value={limits.recipient} />
-        <LimitRow label={t.shareable} value={formatShareable(limits.shareableData)} />
-        <LimitRow label={t.validUntil} value={formatValidUntil(limits.validUntil)} />
-        <LimitRow label={t.amountCap} value={formatAmountCap(limits.amountCap)} />
-      </Card>
+        <View style={[styles.card, styles.switchCard]}>
+          <PermissionSwitchRow
+            title={t.autoBook}
+            value={rule.autoBook}
+            onChange={(value) => update((current) => setSwitch(current, 'autoBook', value))}
+            divider
+          />
+          <PermissionSwitchRow
+            title={t.shareContact}
+            hint={t.shareContactHint}
+            value={rule.shareContact}
+            onChange={(value) => update((current) => setSwitch(current, 'shareContact', value))}
+            divider
+          />
+          <PermissionSwitchRow
+            title={t.payWithSavedCard}
+            hint={t.payWithSavedCardHint}
+            value={rule.payWithSavedCard}
+            onChange={(value) => update((current) => setSwitch(current, 'payWithSavedCard', value))}
+          />
+        </View>
 
-      <View style={styles.conditionBlock}>
-        <SectionLabel>{t.bindingActions}</SectionLabel>
-        <ConditionChoice value={authority.condition} onChange={chooseCondition} />
+        <SectionLabel>{t.validFor}</SectionLabel>
+        <SegmentedControl
+          options={validForOptions}
+          value={rule.validFor}
+          onChange={(validFor) => update((current) => setValidFor(current, validFor, task))}
+        />
       </View>
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  intro: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm + 4 },
-  introText: { flex: 1, gap: spacing.xs },
-  conditionBlock: { gap: spacing.sm },
+  content: { paddingHorizontal: 0, paddingVertical: 0, gap: 0 },
+  body: { marginTop: -(spacing.lg - spacing.xs), paddingHorizontal: spacing.md, gap: spacing.sm + 4 },
+  card: { backgroundColor: colors.surface, borderRadius: 26 },
+  limitCard: {
+    paddingHorizontal: spacing.lg - spacing.xs,
+    paddingVertical: spacing.md + 2,
+    gap: spacing.sm - 2,
+    shadowColor: colors.nightSoft,
+    shadowOpacity: 0.1,
+    shadowRadius: 15,
+    shadowOffset: { width: 0, height: 10 },
+    elevation: 4,
+  },
+  limitValue: { fontFamily: 'PlusJakartaSans_700Bold', fontSize: 40, lineHeight: 45, letterSpacing: -0.8 },
+  switchCard: { borderRadius: 24, paddingHorizontal: spacing.md + 2, paddingVertical: 2 },
   footer: { gap: spacing.sm },
+  saveButton: { backgroundColor: colors.nightSoft, borderRadius: 28, minHeight: 56 },
 });

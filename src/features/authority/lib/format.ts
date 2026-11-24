@@ -1,26 +1,15 @@
-/** Display helpers for the Sınırlar card on screen 21. */
+/** Display helpers for screen 35. Money is shown as "₺5.000" in both languages (rule 1.3). */
 
-import type { IsoDateTime, Money } from '@/types/common';
+import type { Money } from '@/types/common';
 import { formatMoney } from '@/utils/formatMoney';
 
-const MONTHS = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'];
-const DAYS = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
-
-/** "27 Kas Cuma 23.59", in the device's local time. Empty for an unreadable date. */
-export function formatValidUntil(iso: IsoDateTime): string {
-  const date = new Date(iso);
-  if (Number.isNaN(date.getTime())) return '';
-  const hh = date.getHours().toString().padStart(2, '0');
-  const mm = date.getMinutes().toString().padStart(2, '0');
-  return `${date.getDate()} ${MONTHS[date.getMonth()]} ${DAYS[date.getDay()]} ${hh}.${mm}`;
+/** "₺5.000" for the big limit value, the slider value and the slider ends. */
+export function formatLimit(amount: Money): string {
+  return formatMoney(amount);
 }
 
-/** "0 TL", "3.600 TL": the Figma frame writes the cap with "TL" after the number. */
-export function formatAmountCap(amount: Money): string {
-  return `${formatMoney(amount).replace('₺', '')} TL`;
-}
-
-/** "CV_en.pdf · e-posta" */
-export function formatShareable(items: string[]): string {
-  return items.join(' · ');
+/** Screen-reader text for the slider: "5,000 lira" (doc: Accessibility). */
+export function formatLiraSpoken(amount: Money): string {
+  const digits = formatMoney(amount).replace('₺', '').replace(/\./g, ',');
+  return `${digits} lira`;
 }

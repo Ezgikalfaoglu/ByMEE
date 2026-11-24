@@ -1,56 +1,47 @@
 /**
  * Types that only src/features/authority uses (BM-013, Berfin).
  *
- * The task definition (BM-004, Eda, src/types/taskDefinition.ts) is the source of
- * the proposal: which actions the task needs and which limits it suggests.
- * When BM-004 lands, `AuthorityProposal` is derived from it in data/authority.mock.ts;
- * nothing in the screen or the checks changes.
+ * AuthorityRule follows the data model in the User Stories doc (1.4 Data models):
+ * id, taskId | null, limitPerAction (TRY), autoBook, shareContact (+ recipients),
+ * payWithSavedCard (always ask), validFor ('task' | '7d' | 'always'), expiresAt.
  */
 
-import type { Condition, Id, IsoDateTime, Money } from '@/types/common';
+import type { Id, IsoDateTime, Money } from '@/types/common';
 
-/**
- * Generic kinds of action the execution layer checks (BM-029).
- * Labels are task-specific ("İlan ara ve karşılaştır"); kinds are not.
- * Preparing a document and sending it are separate permissions (BM-013 rule).
- */
-export type ActionKind = 'search' | 'prepare_document' | 'send' | 'pay' | 'share_document';
+/** "Valid for" on screen 35: This task / 7 days / Always. */
+export type ValidFor = 'task' | '7d' | 'always';
 
-export type AuthorityAction = {
-  kind: ActionKind;
-  /** What the switch says on screen 21. */
-  label: string;
-  enabled: boolean;
+/** The rule the user saves on screen 35. The execution layer reads only this before a binding action. */
+export type AuthorityRule = {
+  id: Id;
+  /** null = a global rule (BM-072). Screen 35 always saves for one task. */
+  taskId: Id | null;
+  /** Highest amount of one action that Beemy may do on its own. 0 = ask before every action. */
+  limitPerAction: Money;
+  /** "Book under the limit without asking". Condition A ignores it and always asks. */
+  autoBook: boolean;
+  /** "Share my phone and email", only with `shareRecipients`. */
+  shareContact: boolean;
+  shareRecipients: string[];
+  /** "Pay with my saved card". On still means Beemy asks before every payment; off means the card is never used. */
+  payWithSavedCard: boolean;
+  validFor: ValidFor;
+  /** End of task / +7 days / null for Always. */
+  expiresAt: IsoDateTime | null;
+  /** Set by saveRule. */
+  savedAt?: IsoDateTime;
 };
 
-export type AuthorityLimits = {
-  /** Who Beemy may contact, e.g. "Yalnızca ilan sahibi şirket". */
-  recipient: string;
-  /** Documents and data Beemy may share, e.g. ["CV_en.pdf", "e-posta"]. */
-  shareableData: string[];
-  /** After this moment no action is allowed. */
-  validUntil: IsoDateTime;
-  /** Highest amount a single payment may reach. 0 means no payment at all. */
-  amountCap: Money;
+/** What screen 35 needs to know about the task (from the task definition, BM-004). */
+export type AuthorityTask = {
+  id: Id;
+  /** Shown in the header, e.g. "Antalya trip". */
+  title: string;
+  /** Who contact details may be shared with, e.g. ["hotel"]. */
+  shareRecipients: string[];
+  /** Used as expiresAt for "This task"; null when the task has no end yet. */
+  endsAt: IsoDateTime | null;
 };
 
-/** What the task proposes before the user decides. */
-export type AuthorityProposal = {
-  taskId: Id;
-  actions: Pick<AuthorityAction, 'kind' | 'label'>[];
-  limits: AuthorityLimits;
-};
-
-/**
- * The authority the user gave on screen 21. Stored with the task, never in the profile.
- * The execution layer reads only this object before every action.
- */
-export type TaskAuthority = {
-  taskId: Id;
-  actions: AuthorityAction[];
-  limits: AuthorityLimits;
-  /** B "Görevi devret", A "Her işlemden önce sor". */
-  condition: Condition;
-  /** Set when the user taps "Yetkiyi ver ve başlat". */
-  grantedAt?: IsoDateTime;
-};
+/** What the execution layer decides for one proposed action. */
+export type Decision = 'auto' | 'needs_approval' | 'blocked';
