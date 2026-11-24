@@ -1,15 +1,12 @@
-import { AppText, Screen } from '@/components';
+import { Redirect } from 'expo-router';
 
 /**
- * Temporary start screen so the project runs.
- * BM-006 (Eda) replaces this with the first-start check:
- * first start opens 01 Welcome, after setup the app opens 03 My tasks.
+ * BM-006: first-start check.
+ * Rule: first start opens 01 Welcome; after setup the app always opens 09 Home (/home).
+ *
+ * TODO(BM-006): read "setup completed" from storage and redirect to '/home' when it is true.
+ * Until then the app always starts at 01.
  */
 export default function Index() {
-  return (
-    <Screen>
-      <AppText variant="title">Beemy</AppText>
-      <AppText muted>Proje kuruldu. Ekranlar sprint hikâyeleriyle gelecek.</AppText>
-    </Screen>
-  );
+  return <Redirect href="/onboarding" />;
 }
